@@ -52,7 +52,6 @@ MonoBehaviour:
   moveAction: {fileID: -1680190386980627800, guid: bf6d43a64fb8647a0bbaa13593360e61, type: 3}
   jumpAction: {fileID: 1120369429361536294, guid: bf6d43a64fb8647a0bbaa13593360e61, type: 3}
   sprintAction: {fileID: 2816253857141451733, guid: bf6d43a64fb8647a0bbaa13593360e61, type: 3}
-  enterDoorAction: {fileID: -3139500451986772346, guid: bf6d43a64fb8647a0bbaa13593360e61, type: 3}
 --- !u!114 &2776846783687210867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,9 +77,12 @@ MonoBehaviour:
   cruiseHeight: 0.5
   springStrength: 20
   dampenFactor: 0.5
-  _collisionsMask:
+  _groundCollisionMask:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 0
+  _headCollisionMask:
+    serializedVersion: 2
+    m_Bits: 0
   _isGrounded: 0
   _jumpTimer: 0
   _isFalling: 0
@@ -103,7 +105,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

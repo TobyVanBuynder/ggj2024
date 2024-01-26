@@ -29,7 +29,8 @@ public class Move : MonoBehaviour
     public float dampenFactor = .7f;
     
     [Header("Layer collisions")]
-    public LayerMask _collisionsMask;
+    public LayerMask _groundCollisionMask;
+    public LayerMask _headCollisionMask;
 
     private Rigidbody2D _rb;
     private float _previousInputVector;
@@ -103,7 +104,7 @@ public class Move : MonoBehaviour
         // Check for ground
         bool wasGrounded = _isGrounded;
         _groundHit = Physics2D.CircleCast(_groundCastStart, _castRadius, Vector2.down, 
-                                            cruiseHeight, _collisionsMask);
+                                            cruiseHeight, _groundCollisionMask);
         _isGrounded = _groundHit.collider != null;
 
         if (_isGrounded)
@@ -211,7 +212,7 @@ public class Move : MonoBehaviour
         
         // Check for ground
         _headHit = Physics2D.CircleCast(_headCastStart, _castRadius, Vector2.up, 
-            .1f, _collisionsMask);
+            .1f, _headCollisionMask);
         bool headHit = _headHit.collider != null;
 
         if (headHit)
@@ -230,14 +231,14 @@ public class Move : MonoBehaviour
         _forwardHighCastStart = _forwardLowCastStart + Vector2.up * .4f;
             
         _forwardHit = Physics2D.CircleCast(_forwardLowCastStart, _castRadius, Vector2.right * Mathf.Sign(input), 
-            .2f, _collisionsMask);
+            .2f, _groundCollisionMask);
         bool obstacleFound = _forwardHit.collider != null;
         
         if (!obstacleFound)
         {
             // High sweep
             _forwardHit = Physics2D.CircleCast(_forwardHighCastStart, _castRadius, Vector2.right * Mathf.Sign(input), 
-                .2f, _collisionsMask);
+                .2f, _groundCollisionMask);
             obstacleFound = _forwardHit.collider != null;
         }
 
@@ -273,7 +274,7 @@ public class Move : MonoBehaviour
         transform.position = pos;
         
         string layerName = $"Layer{_current2DLayer}";
-        _collisionsMask = LayerMask.GetMask("Default", layerName);
-        _rb.includeLayers = _collisionsMask;
+        _groundCollisionMask = LayerMask.GetMask("Default", layerName);
+        _rb.includeLayers = _groundCollisionMask;
     }
 }
