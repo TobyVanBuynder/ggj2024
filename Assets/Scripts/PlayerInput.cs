@@ -7,7 +7,6 @@ public class PlayerInput : MonoBehaviour
     public InputActionReference moveAction;
     public InputActionReference jumpAction;
     public InputActionReference sprintAction;
-    public InputActionReference enterDoorAction;
 
     private Move _characterController;
     
@@ -21,18 +20,15 @@ public class PlayerInput : MonoBehaviour
         moveAction.asset.Enable();
         jumpAction.asset.Enable();
         sprintAction.asset.Enable();
-        enterDoorAction.asset.Enable();
         
         jumpAction.action.performed += JumpInputPerformed;
         jumpAction.action.canceled += JumpInputCanceled;
-        enterDoorAction.action.performed += EnterDoor;
     }
 
     private void OnDisable()
     {
         jumpAction.action.performed -= JumpInputPerformed;
         jumpAction.action.canceled -= JumpInputCanceled;
-        enterDoorAction.action.performed -= EnterDoor;
     }
 
     private void Update()
@@ -51,8 +47,4 @@ public class PlayerInput : MonoBehaviour
         _characterController.InterruptJump();
     }
 
-    private void EnterDoor(InputAction.CallbackContext _)
-    {
-        _characterController.EnterDoor();
-    }
-}
+}  
