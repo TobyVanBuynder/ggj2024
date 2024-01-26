@@ -31,15 +31,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "EnterDoor",
-                    "type": "Button",
-                    "id": "b65b1a73-cdf3-464d-a15f-3f0652a9a591",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -172,28 +163,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Sprint",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ce44ca17-8e36-4978-ba7a-66c632d2d931",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "EnterDoor",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fe50e602-cbea-4f7d-8feb-f2486607ed43",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "EnterDoor",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
