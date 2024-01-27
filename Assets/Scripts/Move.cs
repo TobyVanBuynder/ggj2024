@@ -1,11 +1,13 @@
 using System;
+using Unity.VisualScripting;
+using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 public class Move : MonoBehaviour
 {
     [field: Header("Inputs")]
-    public float MoveInput { get; set; }
+    public Vector2 MoveInput { get; set; }
     public bool IsSprinting { get; set; }
     
     [Header("Horizontal movement")]
@@ -52,6 +54,8 @@ public class Move : MonoBehaviour
     [SerializeField] private bool _isGrounded;
     [SerializeField] private float _jumpTimer;
     [SerializeField] private bool _isFalling;
+    [SerializeField] private bool _isAnticipatingJump = false;
+    [SerializeField] private bool _isReadyToJump = false;
 
     private void Awake()
     {
@@ -65,23 +69,26 @@ public class Move : MonoBehaviour
         // from holding the player to the ground in the first frame
         if(_jumpTimer <= 0) GroundCheck();
         
-        if(ForwardCheck(MoveInput))
+        if(ForwardCheck(MoveInput.x) && !_isAnticipatingJump)
         {
-            float inputMagnitude = Mathf.Abs(MoveInput);
-            float inputAcceleration = inputMagnitude > _previousInputMagnitude
-                ?
-                _isGrounded ? acceleration : airAcceleration
-                :
-                _isGrounded ? deceleration : airDeceleration;
-            
-            float lerpedInputVector = Mathf.Lerp(_previousInputVector, MoveInput,
-                                                    Time.deltaTime * inputAcceleration);
-            float lerpedMagnitude = Mathf.Abs(lerpedInputVector);
-            _horizontalVelocity = lerpedInputVector * (_isGrounded ? movementSpeed : airMovementSpeed);
-            
-            // Caching for next frame
-            _previousInputMagnitude = lerpedMagnitude;
-            _previousInputVector = lerpedInputVector;
+            if (_isGrounded)
+            {
+                float inputMagnitude = Mathf.Abs(MoveInput.x);
+                float inputAcceleration = inputMagnitude > _previousInputMagnitude
+                    ?
+                    _isGrounded ? acceleration : airAcceleration
+                    :
+                    _isGrounded ? deceleration : airDeceleration;
+                
+                float lerpedInputVector = Mathf.Lerp(_previousInputVector, MoveInput.x,
+                                                        Time.deltaTime * inputAcceleration);
+                float lerpedMagnitude = Mathf.Abs(lerpedInputVector);
+                _horizontalVelocity = lerpedInputVector * (_isGrounded ? movementSpeed : airMovementSpeed);
+                
+                // Caching for next frame
+                _previousInputMagnitude = lerpedMagnitude;
+                _previousInputVector = lerpedInputVector;
+            }
         }
         else
         {
@@ -133,21 +140,26 @@ public class Move : MonoBehaviour
         _timeSinceGrounded += Time.deltaTime;
     }
 
-    public void TryJump()
+    public void AnticipateJump()
     {
         bool canJump = _isGrounded || _timeSinceGrounded < coyoteTime;
-        if (canJump) Jump();
+        if (canJump) _isAnticipatingJump = true;
+    }
+
+    public void ReadyToJump() {
+        _isReadyToJump = true;
     }
 
     private void Jump()
     {
         _jumpTimer = jumpInputDuration;
-
-        // Will be also applied in FixedUpdate
-        _verticalVelocity = initialJumpForce;
         
         // Change it immediately
-        _rb.velocity += Vector2.up * _verticalVelocity;
+        _rb.velocity = MoveInput * initialJumpForce;
+
+        // Will be also applied in FixedUpdate
+        _verticalVelocity = _rb.velocity.y;
+        _horizontalVelocity = _rb.velocity.x;
 
         _isGrounded = false;
     }
@@ -166,7 +178,16 @@ public class Move : MonoBehaviour
 
     public void InterruptJump()
     {
-        _jumpTimer = -1f;
+        if (_isReadyToJump)
+        {
+            Jump();
+        }
+        else
+        {
+            _jumpTimer = -1f;
+        }
+        _isReadyToJump = false;
+        _isAnticipatingJump = false;
     }
 
     private void UpdateJump()

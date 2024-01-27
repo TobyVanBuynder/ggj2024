@@ -21,25 +21,32 @@ public class PlayerInput : MonoBehaviour
         jumpAction.asset.Enable();
         sprintAction.asset.Enable();
         
+        jumpAction.action.started += JumpInputStarted;
         jumpAction.action.performed += JumpInputPerformed;
         jumpAction.action.canceled += JumpInputCanceled;
     }
 
     private void OnDisable()
     {
+        jumpAction.action.started -= JumpInputStarted;
         jumpAction.action.performed -= JumpInputPerformed;
         jumpAction.action.canceled -= JumpInputCanceled;
     }
 
     private void Update()
     {
-        _characterController.MoveInput = moveAction.action.ReadValue<float>();
+        _characterController.MoveInput = moveAction.action.ReadValue<Vector2>();
         _characterController.IsSprinting = sprintAction.action.IsPressed();
+    }
+
+    private void JumpInputStarted(InputAction.CallbackContext _)
+    {
+        _characterController.AnticipateJump();
     }
 
     private void JumpInputPerformed(InputAction.CallbackContext _)
     {
-        _characterController.TryJump();
+        _characterController.ReadyToJump();
     }
 
     private void JumpInputCanceled(InputAction.CallbackContext _)
