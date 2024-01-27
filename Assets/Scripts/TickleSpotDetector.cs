@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class TickleDetector : MonoBehaviour
+public class TickleSpotDetector : MonoBehaviour
 {
     private Tickle _currentTickle;
     public Action TicklingMinigameEnded;

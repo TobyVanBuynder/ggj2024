@@ -557,6 +557,76 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "TicklingMinigame",
+            "id": "3948b3a4-e9f7-44ca-a75a-33a9342e90df",
+            "actions": [
+                {
+                    "name": "Key1",
+                    "type": "Button",
+                    "id": "b249937a-f5eb-4078-b018-b37198943231",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Key2",
+                    "type": "Button",
+                    "id": "f9a73e1f-49a6-4b9f-b500-942d900230b8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "97b30d6d-9b04-401d-b2ed-fc3f4a131425",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "Hold(duration=1)",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Key1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "64d823ff-ab28-43fe-85d9-10e9cc97284e",
+                    "path": "<Keyboard>/a",
+                    "interactions": "Hold(duration=1)",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Key1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6696837b-9ba6-4ec9-90ec-7eb6857cbfb4",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "Hold(duration=1)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Key2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f2f4cbb7-e7fd-48cf-8b5a-892cf671f2c4",
+                    "path": "<Keyboard>/d",
+                    "interactions": "Hold(duration=1)",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Key2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

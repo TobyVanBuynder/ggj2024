@@ -10,13 +10,13 @@ public class PlayerInput : MonoBehaviour
     public InputActionReference tickleEngageAction;
 
     private Move _characterController;
-    private TickleDetector _tickleDetector;
+    private TickleSpotDetector _tickleSpotSpotDetector;
     private InputActionMap _platformingActionMap;
     
     private void Awake()
     {
         _characterController = GetComponent<Move>();
-        _tickleDetector = GetComponentInChildren<TickleDetector>();
+        _tickleSpotSpotDetector = GetComponentInChildren<TickleSpotDetector>();
     }
     
     private void OnEnable()
@@ -29,7 +29,7 @@ public class PlayerInput : MonoBehaviour
         jumpAction.action.canceled += JumpInputCanceled;
         tickleEngageAction.action.performed += EngageTickling;
         
-        _tickleDetector.TicklingMinigameEnded += OnTicklingMinigameEnded;
+        _tickleSpotSpotDetector.TicklingMinigameEnded += OnTicklingMinigameEnded;
     }
 
     private void OnDisable()
@@ -70,9 +70,9 @@ public class PlayerInput : MonoBehaviour
     
     private void EngageTickling(InputAction.CallbackContext _)
     {
-        if(_tickleDetector.CanTickle())
+        if(_tickleSpotSpotDetector.CanTickle())
         {
-            _tickleDetector.EngageTickle();
+            _tickleSpotSpotDetector.EngageTickle();
             _platformingActionMap.Disable();
         }
     }

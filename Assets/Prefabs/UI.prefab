@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7486656861306266463}
   - component: {fileID: 6166033122285280572}
+  - component: {fileID: 6080710345971888998}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -44,4 +45,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a661271bbe64249acc4f070e1066d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sequence: 
+  _timeToComplete: 0
+  _isTickling: 0
   _numButtonsModifier: 6
+--- !u!114 &6080710345971888998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6389213605503998560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375f343ab40294a3783c94a92b63e365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key1Action: {fileID: -6598762987171293664, guid: bf6d43a64fb8647a0bbaa13593360e61, type: 3}
+  key2Action: {fileID: 3672235635395202870, guid: bf6d43a64fb8647a0bbaa13593360e61, type: 3}
