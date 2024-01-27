@@ -21,9 +21,9 @@ public class Tickle : MonoBehaviour
     }
 
     // Invoked by the Dragon
-    public void Appear()
+    public void Appear(float lifetime)
     {
-        _lifetime = 20f;
+        _lifetime = lifetime;
         _cooldownTime = Random.Range(30, 60);
         Difficulty = 1;
         gameObject.SetActive(true);

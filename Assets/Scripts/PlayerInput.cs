@@ -9,9 +9,9 @@ public class PlayerInput : MonoBehaviour
     public InputActionReference sprintAction;
     public InputActionReference tickleEngageAction;
 
-    private bool _canMove = true;
     private Move _characterController;
     private TickleDetector _tickleDetector;
+    private InputActionMap _platformingActionMap;
     
     private void Awake()
     {
@@ -21,10 +21,8 @@ public class PlayerInput : MonoBehaviour
     
     private void OnEnable()
     {
-        moveAction.asset.Enable();
-        jumpAction.asset.Enable();
-        sprintAction.asset.Enable();
-        tickleEngageAction.asset.Enable();
+        _platformingActionMap = moveAction.action.actionMap;
+        _platformingActionMap.Enable();
         
         jumpAction.action.started += JumpInputStarted;
         jumpAction.action.performed += JumpInputPerformed;
@@ -34,17 +32,19 @@ public class PlayerInput : MonoBehaviour
         _tickleDetector.TicklingMinigameEnded += OnTicklingMinigameEnded;
     }
 
-    private void OnTicklingMinigameEnded()
-    {
-        _canMove = true;
-    }
-
     private void OnDisable()
     {
+        _platformingActionMap.Disable();
+        
         jumpAction.action.started -= JumpInputStarted;
         jumpAction.action.performed -= JumpInputPerformed;
         jumpAction.action.canceled -= JumpInputCanceled;
         tickleEngageAction.action.canceled -= EngageTickling;
+    }
+
+    private void OnTicklingMinigameEnded()
+    {
+        moveAction.action.actionMap.Enable();
     }
 
     private void Update()
@@ -73,7 +73,7 @@ public class PlayerInput : MonoBehaviour
         if(_tickleDetector.CanTickle())
         {
             _tickleDetector.EngageTickle();
-            _canMove = false;
+            _platformingActionMap.Disable();
         }
     }
 }  

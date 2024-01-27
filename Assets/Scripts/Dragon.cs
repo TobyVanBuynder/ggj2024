@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Dragon : MonoBehaviour
 {
+    public float spotLifetime = 20f;
     public float intervalBetweenTickleSpots = 10f;
     
     private Tickle[] _tickleSpots;
@@ -37,10 +38,13 @@ public class Dragon : MonoBehaviour
 
     private IEnumerator DisplayNewTickleSpot()
     {
-        _tickleSpots[_tickleSpotToActivate].Appear();
-        _tickleSpotToActivate = (_tickleSpotToActivate + 1) % _tickleSpots.Length;
+        while (true)
+        {
+            _tickleSpots[_tickleSpotToActivate].Appear(spotLifetime);
+            _tickleSpotToActivate = (_tickleSpotToActivate + 1) % _tickleSpots.Length;
         
-        yield return new WaitForSeconds(intervalBetweenTickleSpots);
+            yield return new WaitForSeconds(intervalBetweenTickleSpots);
+        }
     }
 
     private void OnMinigameEnded(bool success)
