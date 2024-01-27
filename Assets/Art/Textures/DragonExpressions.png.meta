@@ -1,0 +1,502 @@
+fileFormatVersion: 2
+guid: 2f9b18d622f350a42a4b59d6f7218dc1
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: 0
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Eye-Grumpy
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 1209
+        width: 401
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c6561ab89e3f5a43a0360088ac5d43d
+      internalID: -1333606010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eye-Normal
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 1223
+        width: 432
+        height: 157
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c92a8cf9ea3bd8e4691e8e39d3cabfe9
+      internalID: -333839519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eye-Happy
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 1207
+        width: 499
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df99f3cc96d23f144b61cbbc55f5c5a3
+      internalID: 198567073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pupil-Grumpy
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 1043
+        width: 418
+        height: 105
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1966602c1546f924692ecd387ee8e35c
+      internalID: 181851621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pupil-Normal
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 1058
+        width: 365
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc423c6aef1789d43af30d60a61365e1
+      internalID: -320018129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pupil-Happy
+      rect:
+        serializedVersion: 2
+        x: 1357
+        y: 1046
+        width: 442
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1210160dd771984469250bc87db00a8b
+      internalID: 1481739033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eye-Fire
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 759
+        width: 403
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb8086fd8601dea488b4f39e247bd2ba
+      internalID: 1400473764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eye-Happy2
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 761
+        width: 504
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8ee7d259ea682d46b972148d18d2523
+      internalID: 1595310435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pupil-Fire
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 607
+        width: 386
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40d53517c8417384aa2fccc397b8aebc
+      internalID: -956426701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pupil-Happy2
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 598
+        width: 454
+        height: 140
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 899b1cd63f499364c953c3b0b6d65d64
+      internalID: -596415140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Happy2Cheeks
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 513
+        width: 714
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db03de26f9e669f428da5107f18c3484
+      internalID: -1783761725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mouth-FireAndChest
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 39
+        width: 458
+        height: 463
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfb0e8873cce95544a8b688e5117f9bb
+      internalID: 627848939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mouth-Happy
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 67
+        width: 646
+        height: 369
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e71e0eb00f83a9a4e9a2d2eb453a48ce
+      internalID: -1282535084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mouth-Normal
+      rect:
+        serializedVersion: 2
+        x: 1336
+        y: 77
+        width: 666
+        height: 393
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15ead703cc43b5145b2e2fd92302a01c
+      internalID: -963481542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: -932, y: 460}
+      - {x: -932, y: 628}
+      - {x: -507, y: 628}
+      - {x: -507, y: 460}
+    - - {x: -929, y: 265}
+      - {x: -929, y: 434}
+      - {x: -486, y: 434}
+      - {x: -486, y: 265}
+    - - {x: -354, y: 452}
+      - {x: -354, y: 625}
+      - {x: 102, y: 625}
+      - {x: 102, y: 452}
+    - - {x: -309, y: 291}
+      - {x: -309, y: 410}
+      - {x: 92, y: 410}
+      - {x: 92, y: 291}
+    - - {x: 245, y: 437}
+      - {x: 245, y: 653}
+      - {x: 784, y: 653}
+      - {x: 784, y: 437}
+    - - {x: 287, y: 280}
+      - {x: 287, y: 417}
+      - {x: 764, y: 417}
+      - {x: 764, y: 280}
+    - - {x: -927, y: 0}
+      - {x: -927, y: 189}
+      - {x: -505, y: 189}
+      - {x: -505, y: 0}
+    - - {x: -917, y: -153}
+      - {x: -917, y: -21}
+      - {x: -491, y: -21}
+      - {x: -491, y: -153}
+    - - {x: -361, y: -6}
+      - {x: -361, y: 201}
+      - {x: 160, y: 201}
+      - {x: 160, y: -6}
+    - - {x: -335, y: -165}
+      - {x: -335, y: -6}
+      - {x: 141, y: -6}
+      - {x: 141, y: -165}
+    - - {x: -452, y: -257}
+      - {x: -452, y: -174}
+      - {x: 272, y: -174}
+      - {x: 272, y: -257}
+    - - {x: -942, y: -725}
+      - {x: -942, y: -239}
+      - {x: -465, y: -239}
+      - {x: -465, y: -725}
+    - - {x: -418, y: -695}
+      - {x: -418, y: -296}
+      - {x: 248, y: -296}
+      - {x: 248, y: -695}
+    - - {x: 283, y: -688}
+      - {x: 283, y: -272}
+      - {x: 953, y: -272}
+      - {x: 953, y: -688}
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      DragonExpressions_1: -1408970209
+      DragonExpressions_11: 1040034448
+      DragonExpressions_13: -1406519302
+      DragonExpressions_15: 23987602
+      DragonExpressions_17: -1009569865
+      DragonExpressions_19: -1604354185
+      DragonExpressions_21: 1503505124
+      DragonExpressions_3: 646556913
+      DragonExpressions_5: -1813546016
+      DragonExpressions_7: -724104852
+      DragonExpressions_9: -876835282
+      Eye-Fire: 1400473764
+      Eye-Grumpy: -1333606010
+      Eye-Happy: 198567073
+      Eye-Happy2: 1595310435
+      Eye-Normal: -333839519
+      Happy2Cheeks: -1783761725
+      Mouth-FireAndChest: 627848939
+      Mouth-Happy: -1282535084
+      Mouth-Normal: -963481542
+      Pupil-Fire: -956426701
+      Pupil-Grumpy: 181851621
+      Pupil-Happy: 1481739033
+      Pupil-Happy2: -596415140
+      Pupil-Normal: -320018129
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
