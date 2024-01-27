@@ -608,14 +608,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7625787989448969850, guid: 05c6b405a9fad473ba4ea0b1b6162aa0, type: 3}
-      propertyPath: _platformingActionMap.m_Id
-      value: a0c6abc8-bb08-44d7-9a7c-527a9ec37fad
-      objectReference: {fileID: 0}
-    - target: {fileID: 7625787989448969850, guid: 05c6b405a9fad473ba4ea0b1b6162aa0, type: 3}
-      propertyPath: _platformingActionMap.m_Name
-      value: Platforming
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
