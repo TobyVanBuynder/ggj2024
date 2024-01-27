@@ -927,7 +927,7 @@ EdgeCollider2D:
   - {x: 0.15950263, y: 2.6328552}
   - {x: 0.73898417, y: 2.5318015}
   - {x: 1.1288723, y: 2.1324234}
-  - {x: 1.4651513, y: 1.4493247}
+  - {x: 1.3527219, y: 1.828774}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -1845,8 +1845,8 @@ EdgeCollider2D:
   - {x: -0.038744986, y: 2.6006477}
   - {x: 0.54679537, y: 2.9808156}
   - {x: 0.95222974, y: 2.9905827}
-  - {x: 1.3761085, y: 2.7752874}
-  - {x: 1.8215264, y: 2.0856302}
+  - {x: 1.3198938, y: 2.8736632}
+  - {x: 1.6809896, y: 2.268328}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -2627,7 +2627,9 @@ GameObject:
   - component: {fileID: 5735293064844291907}
   - component: {fileID: 7325073363257153939}
   - component: {fileID: 805553370197419156}
+  - component: {fileID: 3442881782142724137}
   - component: {fileID: 6807048082788051396}
+  - component: {fileID: 7013813593811931052}
   m_Layer: 6
   m_Name: DragonPatches_5
   m_TagString: Untagged
@@ -2737,21 +2739,57 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -6.8295603, y: 0.25120836}
-  - {x: -6.1315393, y: 0.83047146}
-  - {x: -5.298464, y: 1.0682642}
-  - {x: -5.115014, y: 1.8802162}
-  - {x: -4.563903, y: 3.3612285}
-  - {x: -3.8988032, y: 4.0716853}
+  - {x: -4.575581, y: 3.2401807}
+  - {x: -4.1719065, y: 3.8389745}
   - {x: -2.9974802, y: 4.4683886}
   - {x: -0.95075566, y: 4.935853}
   - {x: 0.7438816, y: 5.082141}
   - {x: 2.1203883, y: 4.810585}
-  - {x: 3.1584303, y: 4.0922194}
-  - {x: 3.929343, y: 2.972218}
-  - {x: 4.4421864, y: 2.0237799}
-  - {x: 5.718245, y: 1.7341347}
-  - {x: 6.9132957, y: 1.0048358}
+  - {x: 2.6889346, y: 4.519792}
+  - {x: 3.2071893, y: 4.1120424}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!68 &3442881782142724137
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8820693757774065870}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -6.8236895, y: 0.27871713}
+  - {x: -6.341677, y: 0.69191945}
+  - {x: -5.850108, y: 0.94241863}
+  - {x: -5.3232265, y: 1.0894417}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -2768,6 +2806,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5022d32c2bbeb41da95fb31a03344ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!68 &7013813593811931052
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8820693757774065870}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 4.4895406, y: 2.059778}
+  - {x: 5.7181425, y: 1.735845}
+  - {x: 6.907237, y: 1.057831}
+  - {x: 7.398123, y: 0.36199135}
+  - {x: 7.7176733, y: -0.21203676}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1001 &792333719910352878
 PrefabInstance:
   m_ObjectHideFlags: 0

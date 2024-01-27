@@ -330,7 +330,8 @@ public class Move : MonoBehaviour
             obstacleFound = _forwardHit.collider != null;
         }
 
-        return !obstacleFound;
+        return true;
+        //return !obstacleFound;
     }
 
     private void OnDrawGizmosSelected()
