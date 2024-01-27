@@ -10,33 +10,41 @@ public class PlayerInput : MonoBehaviour
     public InputActionReference tickleEngageAction;
 
     private Move _characterController;
-    private TickleDetector _tickleDetector;
+    private TickleSpotDetector _tickleSpotSpotDetector;
+    private InputActionMap _platformingActionMap;
     
     private void Awake()
     {
         _characterController = GetComponent<Move>();
-        _tickleDetector = GetComponentInChildren<TickleDetector>();
+        _tickleSpotSpotDetector = GetComponentInChildren<TickleSpotDetector>();
     }
     
     private void OnEnable()
     {
-        moveAction.asset.Enable();
-        jumpAction.asset.Enable();
-        sprintAction.asset.Enable();
-        tickleEngageAction.asset.Enable();
+        _platformingActionMap = moveAction.action.actionMap;
+        _platformingActionMap.Enable();
         
         jumpAction.action.started += JumpInputStarted;
         jumpAction.action.performed += JumpInputPerformed;
         jumpAction.action.canceled += JumpInputCanceled;
         tickleEngageAction.action.performed += EngageTickling;
+        
+        _tickleSpotSpotDetector.TicklingMinigameEnded += OnTicklingMinigameEnded;
     }
 
     private void OnDisable()
     {
+        _platformingActionMap.Disable();
+        
         jumpAction.action.started -= JumpInputStarted;
         jumpAction.action.performed -= JumpInputPerformed;
         jumpAction.action.canceled -= JumpInputCanceled;
         tickleEngageAction.action.canceled -= EngageTickling;
+    }
+
+    private void OnTicklingMinigameEnded()
+    {
+        moveAction.action.actionMap.Enable();
     }
 
     private void Update()
@@ -62,9 +70,10 @@ public class PlayerInput : MonoBehaviour
     
     private void EngageTickling(InputAction.CallbackContext _)
     {
-        if(_tickleDetector.CanTickle())
+        if(_tickleSpotSpotDetector.CanTickle())
         {
-            _tickleDetector.EngageTickle();
+            _tickleSpotSpotDetector.EngageTickle();
+            _platformingActionMap.Disable();
         }
     }
 }  

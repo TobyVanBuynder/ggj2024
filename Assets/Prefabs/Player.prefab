@@ -87,6 +87,12 @@ MonoBehaviour:
   jumpAction: {fileID: 1120369429361536294, guid: bf6d43a64fb8647a0bbaa13593360e61, type: 3}
   sprintAction: {fileID: 2816253857141451733, guid: bf6d43a64fb8647a0bbaa13593360e61, type: 3}
   tickleEngageAction: {fileID: 8687365793856343141, guid: bf6d43a64fb8647a0bbaa13593360e61, type: 3}
+  _platformingActionMap:
+    m_Name: Platforming
+    m_Id: bf813031-6f6e-499b-897d-d30e6c9f10d1
+    m_Asset: {fileID: 0}
+    m_Actions: []
+    m_Bindings: []
 --- !u!114 &2776846783687210867
 MonoBehaviour:
   m_ObjectHideFlags: 0

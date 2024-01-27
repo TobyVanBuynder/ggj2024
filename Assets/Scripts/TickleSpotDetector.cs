@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
-public class TickleDetector : MonoBehaviour
+public class TickleSpotDetector : MonoBehaviour
 {
     private Tickle _currentTickle;
+    public Action TicklingMinigameEnded;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -17,7 +19,13 @@ public class TickleDetector : MonoBehaviour
     public bool CanTickle() => _currentTickle != null;
     public void EngageTickle()
     {
-        // TODO: hook into tickling over event from Tickle.cs
+        _currentTickle.TicklingMinigameEnded += OnTicklingMinigameEnded;
         _currentTickle.Engage();
+    }
+
+    private void OnTicklingMinigameEnded(bool success)
+    {
+        TicklingMinigameEnded?.Invoke(); // PlayerInput listens to this
+        _currentTickle.TicklingMinigameEnded -= OnTicklingMinigameEnded;
     }
 }

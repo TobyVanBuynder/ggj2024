@@ -172,7 +172,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -6.1847, y: 7.846653}
+  m_Offset: {x: -4.909998, y: -0.58601475}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -183,7 +183,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 112.0605, y: 55.103706}
+  m_Size: {x: 59.699535, y: 32.355118}
   m_EdgeRadius: 0
 --- !u!4 &439224040
 Transform:
@@ -607,6 +607,14 @@ PrefabInstance:
     - target: {fileID: 7086115169855338019, guid: 05c6b405a9fad473ba4ea0b1b6162aa0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625787989448969850, guid: 05c6b405a9fad473ba4ea0b1b6162aa0, type: 3}
+      propertyPath: _platformingActionMap.m_Id
+      value: a0c6abc8-bb08-44d7-9a7c-527a9ec37fad
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625787989448969850, guid: 05c6b405a9fad473ba4ea0b1b6162aa0, type: 3}
+      propertyPath: _platformingActionMap.m_Name
+      value: Platforming
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
