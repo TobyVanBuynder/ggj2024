@@ -24,6 +24,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "EngageTickle",
+                    "type": "Button",
+                    "id": "bc7512c9-d9b4-4352-8022-f8b321c296bf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Sprint",
                     "type": "Button",
                     "id": "69529305-7ca9-4f3a-a7eb-96c8c0995e36",
@@ -163,6 +172,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9c5ba387-c7c3-404d-9f2c-97e715a7c447",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "Hold(duration=1)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "EngageTickle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8b950375-3f44-454d-b883-88dfb1adbde2",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "EngageTickle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

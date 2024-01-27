@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1234609178475425423}
   - component: {fileID: 8151902540871455372}
   - component: {fileID: 1741179140506353192}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DragonPatches_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 6925291072640187374}
   - component: {fileID: 6474760390696575787}
   - component: {fileID: 8756818323526044299}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DragonPatches_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 5044922967255287033}
   - component: {fileID: 8288689814256001657}
   - component: {fileID: 6893153173921263754}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DragonPatches_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -860,6 +860,7 @@ Transform:
   - {fileID: 1764605675975539932}
   - {fileID: 6925291072640187374}
   - {fileID: 5191211703931394706}
+  - {fileID: 658323199465968459}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8285486940167289711
@@ -1104,7 +1105,7 @@ GameObject:
   - component: {fileID: 5708722445007050121}
   - component: {fileID: 6700501705543383045}
   - component: {fileID: 7157495040100031407}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DragonPatches_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1238,7 +1239,7 @@ GameObject:
   - component: {fileID: 8903928022130274536}
   - component: {fileID: 8310170682564772094}
   - component: {fileID: 1592916358940717350}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Jaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1376,7 +1377,7 @@ GameObject:
   - component: {fileID: 1764605675975539932}
   - component: {fileID: 8278027360528239017}
   - component: {fileID: 8705530894066950115}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DragonPatches_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1591,7 +1592,7 @@ GameObject:
   - component: {fileID: 5735293064844291907}
   - component: {fileID: 7325073363257153939}
   - component: {fileID: 805553370197419156}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DragonPatches_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1719,3 +1720,77 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!1001 &792333719910352878
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3808911159623818277}
+    m_Modifications:
+    - target: {fileID: 278161219343570085, guid: a6687f15d9c381d4c9e81e92f96cc998, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 278161219343570085, guid: a6687f15d9c381d4c9e81e92f96cc998, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 278161219343570085, guid: a6687f15d9c381d4c9e81e92f96cc998, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 278161219343570085, guid: a6687f15d9c381d4c9e81e92f96cc998, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 278161219343570085, guid: a6687f15d9c381d4c9e81e92f96cc998, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 278161219343570085, guid: a6687f15d9c381d4c9e81e92f96cc998, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 278161219343570085, guid: a6687f15d9c381d4c9e81e92f96cc998, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 278161219343570085, guid: a6687f15d9c381d4c9e81e92f96cc998, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 278161219343570085, guid: a6687f15d9c381d4c9e81e92f96cc998, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 278161219343570085, guid: a6687f15d9c381d4c9e81e92f96cc998, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415906784691355535, guid: a6687f15d9c381d4c9e81e92f96cc998, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415906784691355535, guid: a6687f15d9c381d4c9e81e92f96cc998, type: 3}
+      propertyPath: m_SortingOrder
+      value: 104
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415906784691355535, guid: a6687f15d9c381d4c9e81e92f96cc998, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1364883071
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882249406318478300, guid: a6687f15d9c381d4c9e81e92f96cc998, type: 3}
+      propertyPath: m_Name
+      value: TickleSpot
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a6687f15d9c381d4c9e81e92f96cc998, type: 3}
+--- !u!4 &658323199465968459 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 278161219343570085, guid: a6687f15d9c381d4c9e81e92f96cc998, type: 3}
+  m_PrefabInstance: {fileID: 792333719910352878}
+  m_PrefabAsset: {fileID: 0}

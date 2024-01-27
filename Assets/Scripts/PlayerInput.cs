@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
     public InputActionReference moveAction;
     public InputActionReference jumpAction;
     public InputActionReference sprintAction;
+    public InputActionReference tickleEngageAction;
 
     private Move _characterController;
     
@@ -20,10 +21,12 @@ public class PlayerInput : MonoBehaviour
         moveAction.asset.Enable();
         jumpAction.asset.Enable();
         sprintAction.asset.Enable();
+        tickleEngageAction.asset.Enable();
         
         jumpAction.action.started += JumpInputStarted;
         jumpAction.action.performed += JumpInputPerformed;
         jumpAction.action.canceled += JumpInputCanceled;
+        tickleEngageAction.action.performed += EngageTickling;
     }
 
     private void OnDisable()
@@ -31,6 +34,7 @@ public class PlayerInput : MonoBehaviour
         jumpAction.action.started -= JumpInputStarted;
         jumpAction.action.performed -= JumpInputPerformed;
         jumpAction.action.canceled -= JumpInputCanceled;
+        tickleEngageAction.action.canceled -= EngageTickling;
     }
 
     private void Update()
@@ -53,5 +57,9 @@ public class PlayerInput : MonoBehaviour
     {
         _characterController.InterruptJump();
     }
-
+    
+    private void EngageTickling(InputAction.CallbackContext _)
+    {
+        
+    }
 }  
