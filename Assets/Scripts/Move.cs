@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Move : MonoBehaviour
 {
@@ -48,13 +49,13 @@ public class Move : MonoBehaviour
     public DragonPart _currentDragonPart;
     private bool _isFlyingOff;
     private Animator _animator;
+    private Coroutine _jumpCoroutine;
     
     [Header("Debug (should be private)")]
     [SerializeField] private bool _isGrounded;
     [SerializeField] private float _jumpTimer;
     [SerializeField] private bool _isFalling;
-    [SerializeField] private bool _isAnticipatingJump = false;
-    [SerializeField] private bool _isReadyToJump = false;
+    [SerializeField] private bool _preparingJump = false;
 
     private void Awake()
     {
@@ -69,7 +70,7 @@ public class Move : MonoBehaviour
         // from holding the player to the ground in the first frame
         if(_jumpTimer <= 0) GroundCheck();
         
-        if(ForwardCheck(MoveInput.x) && !_isAnticipatingJump)
+        if(ForwardCheck(MoveInput.x) && !_preparingJump)
         {
             if(!_isFlyingOff)
             {
@@ -85,7 +86,8 @@ public class Move : MonoBehaviour
                 float lerpedMagnitude = Mathf.Abs(lerpedInputVector);
                 _horizontalVelocity = lerpedInputVector * (_isGrounded ? movementSpeed : airMovementSpeed);
 
-                body.localScale = new Vector3(-Mathf.Sign(_horizontalVelocity), 1f, 1f);
+                if (Mathf.Abs(_horizontalVelocity) > .1f)
+                    body.localScale = new Vector3(-Mathf.Sign(_horizontalVelocity), 1f, 1f);
 
                 // Caching for next frame
                 _previousInputMagnitude = lerpedMagnitude;
@@ -146,14 +148,22 @@ public class Move : MonoBehaviour
         _timeSinceGrounded += Time.deltaTime;
     }
 
-    public void AnticipateJump()
+    public void PrepareJump()
     {
         bool canJump = _isGrounded || _timeSinceGrounded < coyoteTime;
-        if (canJump) _isAnticipatingJump = true;
+        if (canJump)
+        {
+            _preparingJump = true;
+            _animator.SetTrigger("LoadJump");
+            _jumpCoroutine = StartCoroutine(ActuallyJump());
+        }
     }
 
-    public void ReadyToJump() {
-        _isReadyToJump = true;
+    private IEnumerator ActuallyJump()
+    {
+        yield return new WaitForSeconds(.55f);
+        
+        Jump();
     }
 
     private void Jump()
@@ -162,9 +172,10 @@ public class Move : MonoBehaviour
         
         // Will be also applied in FixedUpdate
         _verticalVelocity = initialJumpForce;
+        _horizontalVelocity = MoveInput.x * movementSpeed;
         
         // Change it immediately
-        _rb.velocity = new Vector2(MoveInput.x, _verticalVelocity);
+        _rb.velocity = new Vector2(_horizontalVelocity, _verticalVelocity);
 
         if (_currentDragonPart != null)
         {
@@ -172,6 +183,7 @@ public class Move : MonoBehaviour
             _currentDragonPart = null;
         }
 
+        _preparingJump = false;
         _isGrounded = false;
         _animator.SetBool("IsGrounded", false);
     }
@@ -219,19 +231,20 @@ public class Move : MonoBehaviour
         _currentDragonPart.ShakeOff -= FlyOff;
         _currentDragonPart = null;
 
+        StopCoroutine(_jumpCoroutine);
         StartCoroutine(EndFlyOff());
         _animator.SetBool("IsGrounded", false);
     }
 
     private IEnumerator EndFlyOff()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         _isFlyingOff = false;
     }
 
     public void InterruptJump()
     {
-        if (_isReadyToJump)
+        if (_preparingJump)
         {
             Jump();
         }
@@ -239,8 +252,7 @@ public class Move : MonoBehaviour
         {
             _jumpTimer = -1f;
         }
-        _isReadyToJump = false;
-        _isAnticipatingJump = false;
+        _preparingJump = false;
     }
 
     private void UpdateJump()

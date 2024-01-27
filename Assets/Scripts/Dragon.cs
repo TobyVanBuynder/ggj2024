@@ -52,16 +52,9 @@ public class Dragon : MonoBehaviour
     private void ChangeMood(int influenceChange)
     {
         _moodLevel += influenceChange;
-        
-        switch (_moodLevel)
-        {
-            case < Mood.Grumpy:
-                _moodLevel = Mood.Grumpy;
-                break;
-            case > Mood.Cute:
-                _moodLevel = Mood.Cute;
-                break;
-        }
+
+        if (_moodLevel < Mood.Grumpy) _moodLevel = Mood.Grumpy;
+        if (_moodLevel > Mood.Cute) _moodLevel = Mood.Cute;
     }
 
     public void EndGame()
