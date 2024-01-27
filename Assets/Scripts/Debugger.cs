@@ -9,7 +9,7 @@ public class Debugger : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.C)) {
-            FindAnyObjectByType<Tickle>().Engage();
+            FindAnyObjectByType<TickleSpot>().Engage();
         }
     }
 }

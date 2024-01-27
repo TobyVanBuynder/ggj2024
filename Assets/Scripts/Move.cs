@@ -231,7 +231,7 @@ public class Move : MonoBehaviour
         _currentDragonPart.ShakeOff -= FlyOff;
         _currentDragonPart = null;
 
-        StopCoroutine(_jumpCoroutine);
+        if(_jumpCoroutine != null) StopCoroutine(_jumpCoroutine);
         StartCoroutine(EndFlyOff());
         _animator.SetBool("IsGrounded", false);
     }

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Tickle : MonoBehaviour
+public class TickleSpot : MonoBehaviour
 {
     private TickleUI _tickleUI;
     public int Difficulty{get; private set; }
@@ -37,7 +37,7 @@ public class Tickle : MonoBehaviour
     public void End(bool isSuccess)
     {
         TicklingMinigameEnded?.Invoke(isSuccess); // Notifies the TickleDetector, and Dragon
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     void Update()
