@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,14 +8,19 @@ public class TicklingInput : MonoBehaviour
     public InputActionReference key2Action;
     
     private InputActionMap _ticklingActionMap;
+    private TickleUI _tickleUI;
+
+    void Start()
+    {
+        _tickleUI = FindObjectOfType<TickleUI>();
+        key1Action.action.started += OnKey1;
+        key2Action.action.started += OnKey2;
+        _ticklingActionMap = key1Action.action.actionMap;
+    }
 
     private void OnEnable()
     {
-        _ticklingActionMap = key1Action.action.actionMap;
         _ticklingActionMap.Enable();
-
-        key1Action.action.started += OnKey1;
-        key2Action.action.started += OnKey2;
     }
 
     private void OnDisable()
@@ -28,11 +30,13 @@ public class TicklingInput : MonoBehaviour
 
     private void OnKey1(InputAction.CallbackContext _)
     {
-        Debug.Log("Key 1 pressed");
+        Debug.Log("Key 1 pressed (A)");
+        _tickleUI.OnKeyPressed(TickleButtonType.A);
     }
 
     private void OnKey2(InputAction.CallbackContext _)
     {
-        Debug.Log("Key 2 pressed");
+        Debug.Log("Key 2 pressed (B)");
+        _tickleUI.OnKeyPressed(TickleButtonType.B);
     }
 }

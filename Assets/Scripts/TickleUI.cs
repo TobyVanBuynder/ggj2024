@@ -1,33 +1,23 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Video;
 
 public class TickleUI : MonoBehaviour
 {
-    private enum TickleButton {
-        LEFT,
-        RIGHT,
-        UP,
-        DOWN,
-        A,
-        B,
-        X,
-        Y,
-        MAX
-    }
     private Tickle _currentTickle;
     private const float _baseTimeToComplete = 10.0f;
-    [SerializeField] private List<TickleButton> _sequence;
-    [SerializeField] private float _timeToComplete;
+    [SerializeField] private List<GameObject> _sequence;
+    [SerializeField] private float _timeToComplete = -1f;
     [SerializeField] private bool _isTickling = false;
     [SerializeField] private int _numButtonsModifier = 6;
+    [SerializeField] private GameObject[] _buttonPrefabs;
+
+    private int _currentSequenceIndex = 0;
 
     public bool IsOpen{get; private set;}
 
     void Awake()
     {
-        _sequence = new List<TickleButton>();
+        _sequence = new List<GameObject>();
         IsOpen = false;
     }
 
@@ -37,6 +27,8 @@ public class TickleUI : MonoBehaviour
         _currentTickle = tickle;
         _timeToComplete = _baseTimeToComplete - _currentTickle.Difficulty * 0.5f;
         SetupSequence(_currentTickle.Difficulty);
+        _currentSequenceIndex = 0;
+        _sequence[0].GetComponent<TickleButtonPrompt>().Show();
         _isTickling = true;
     }
 
@@ -44,6 +36,35 @@ public class TickleUI : MonoBehaviour
     {
         IsOpen = false;
         _currentTickle.End(isSuccess); // TODO: change this latah
+    }
+
+    public void OnKeyPressed(TickleButtonType pressedButton)
+    {
+        TickleButtonPrompt currentButtonPrompt = _sequence[_currentSequenceIndex].GetComponent<TickleButtonPrompt>();
+        if (pressedButton == currentButtonPrompt.button)
+        {
+            currentButtonPrompt.Complete();
+            if (_currentSequenceIndex + 1 < _sequence.Count)
+            {
+                MoveToNextButton();
+            }
+            else
+            {
+                // Finish success
+                Close(true);
+            }
+        }
+        else
+        {
+            // Wrong button pressed => failed
+            Close(false);
+        }
+    }
+
+    private void MoveToNextButton()
+    {
+        _currentSequenceIndex++;
+        _sequence[_currentSequenceIndex].GetComponent<TickleButtonPrompt>().Show();
     }
 
     private void SetupSequence(int difficulty)
@@ -54,7 +75,8 @@ public class TickleUI : MonoBehaviour
         _sequence.Capacity = sequenceSize;
         for (int b = 0; b < sequenceSize; b++)
         {
-            _sequence.Add((TickleButton)Random.Range(0, (int)TickleButton.MAX));
+            int nextButtonToPress = Random.Range(0, /*(int)TickleButtonType.MAX*/2);
+            _sequence.Add(Instantiate(_buttonPrefabs[nextButtonToPress], transform));
         }
     }
 
@@ -62,8 +84,8 @@ public class TickleUI : MonoBehaviour
     {
         if (_isTickling)
         {
-            _timeToComplete -= Time.deltaTime;
-            if (_timeToComplete <= 0) {
+            if ((_timeToComplete -= Time.deltaTime) <= 0)
+            {
                 _isTickling = false;
                 Close(false);
             }
