@@ -1,38 +1,33 @@
-using System;
-using Unity.VisualScripting;
-using UnityEditor.Callbacks;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Move : MonoBehaviour
 {
-    [field: Header("Inputs")]
-    public Vector2 MoveInput { get; set; }
+    [field: Header("Inputs")] public Vector2 MoveInput { get; set; }
     public bool IsSprinting { get; set; }
-    
-    [Header("Horizontal movement")]
-    public float movementSpeed = 8f;
+
+    [Header("Horizontal movement")] public float movementSpeed = 8f;
     public float airMovementSpeed = 6f;
     public float acceleration = 2f;
     public float deceleration = 8f;
     public float airAcceleration = 2f;
     public float airDeceleration = 8f;
-    
-    [Header("Jump")]
-    public float jumpInputDuration = .5f;
+
+    [Header("Jump")] public float jumpInputDuration = .5f;
     public float initialJumpForce = 10f;
     public float coyoteTime = .125f;
+
     [Tooltip("Maximum allowed speed when falling. Expressed as a positive quantity.")]
     public float maxFallSpeed = 40;
-    
-    [Header("Spring")]
-    public float cruiseHeight = .5f;
+
+    [Header("Spring")] public float cruiseHeight = .5f;
     public float springStrength = 20f;
     public float dampenFactor = .7f;
-    
-    [Header("Layer collisions")]
-    public LayerMask _groundCollisionMask;
+
+    [Header("Layer collisions")] public LayerMask _groundCollisionMask;
     public LayerMask _headCollisionMask;
+
+    [Header("Sprite")]
+    public Transform body;
 
     private Rigidbody2D _rb;
     private float _previousInputVector;
@@ -82,6 +77,8 @@ public class Move : MonoBehaviour
                                                     Time.deltaTime * inputAcceleration);
             float lerpedMagnitude = Mathf.Abs(lerpedInputVector);
             _horizontalVelocity = lerpedInputVector * (_isGrounded ? movementSpeed : airMovementSpeed);
+
+            body.localScale = new Vector3(-Mathf.Sign(_horizontalVelocity), 1f, 1f);
             
             // Caching for next frame
             _previousInputMagnitude = lerpedMagnitude;
@@ -248,7 +245,7 @@ public class Move : MonoBehaviour
         _forwardHighCastStart = _forwardLowCastStart + Vector2.up * .4f;
             
         _forwardHit = Physics2D.CircleCast(_forwardLowCastStart, _castRadius, Vector2.right * Mathf.Sign(input), 
-            .2f, _groundCollisionMask);
+            .2f, _headCollisionMask);
         bool obstacleFound = _forwardHit.collider != null;
         
         if (!obstacleFound)
@@ -280,18 +277,5 @@ public class Move : MonoBehaviour
         Gizmos.color = new Color(1f, 0.35f, 0.63f);
         Gizmos.DrawWireSphere(_forwardLowCastStart + Vector2.right * Mathf.Sign(_previousInputVector) * .2f, _castRadius);
         Gizmos.DrawWireSphere(_forwardHighCastStart + Vector2.right * Mathf.Sign(_previousInputVector) * .2f, _castRadius);
-    }
-
-    public void EnterDoor()
-    {
-        _current2DLayer = (_current2DLayer + 1) % 2;
-        
-        Vector3 pos = transform.position;
-        pos.z = _current2DLayer * 10f;
-        transform.position = pos;
-        
-        string layerName = $"Layer{_current2DLayer}";
-        _groundCollisionMask = LayerMask.GetMask("Default", layerName);
-        _rb.includeLayers = _groundCollisionMask;
     }
 }
