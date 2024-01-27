@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Move : MonoBehaviour
@@ -44,6 +46,8 @@ public class Move : MonoBehaviour
     private RaycastHit2D _forwardHit;
     private float _timeSinceGrounded;
     private int _current2DLayer;
+    public DragonPart _currentDragonPart;
+    private bool _isFlyingOff;
     
     [Header("Debug (should be private)")]
     [SerializeField] private bool _isGrounded;
@@ -66,23 +70,26 @@ public class Move : MonoBehaviour
         
         if(ForwardCheck(MoveInput.x) && !_isAnticipatingJump)
         {
-            float inputMagnitude = Mathf.Abs(MoveInput.x);
-            float inputAcceleration = inputMagnitude > _previousInputMagnitude
-                ?
-                _isGrounded ? acceleration : airAcceleration
-                :
-                _isGrounded ? deceleration : airDeceleration;
-            
-            float lerpedInputVector = Mathf.Lerp(_previousInputVector, MoveInput.x,
-                                                    Time.deltaTime * inputAcceleration);
-            float lerpedMagnitude = Mathf.Abs(lerpedInputVector);
-            _horizontalVelocity = lerpedInputVector * (_isGrounded ? movementSpeed : airMovementSpeed);
+            if(!_isFlyingOff)
+            {
+                float inputMagnitude = Mathf.Abs(MoveInput.x);
+                float inputAcceleration = inputMagnitude > _previousInputMagnitude
+                    ? _isGrounded ? acceleration : airAcceleration
+                    : _isGrounded
+                        ? deceleration
+                        : airDeceleration;
 
-            body.localScale = new Vector3(-Mathf.Sign(_horizontalVelocity), 1f, 1f);
-            
-            // Caching for next frame
-            _previousInputMagnitude = lerpedMagnitude;
-            _previousInputVector = lerpedInputVector;
+                float lerpedInputVector = Mathf.Lerp(_previousInputVector, MoveInput.x,
+                    Time.deltaTime * inputAcceleration);
+                float lerpedMagnitude = Mathf.Abs(lerpedInputVector);
+                _horizontalVelocity = lerpedInputVector * (_isGrounded ? movementSpeed : airMovementSpeed);
+
+                body.localScale = new Vector3(-Mathf.Sign(_horizontalVelocity), 1f, 1f);
+
+                // Caching for next frame
+                _previousInputMagnitude = lerpedMagnitude;
+                _previousInputVector = lerpedInputVector;
+            }
         }
         else
         {
@@ -97,6 +104,8 @@ public class Move : MonoBehaviour
 
     private void GroundCheck()
     {
+        if (_isFlyingOff) return;
+        
         Vector2 velocity = _rb.velocity;
         
         Vector2 position2D = transform.position;
@@ -154,6 +163,12 @@ public class Move : MonoBehaviour
         // Change it immediately
         _rb.velocity = new Vector2(MoveInput.x, _verticalVelocity);
 
+        if (_currentDragonPart != null)
+        {
+            _currentDragonPart.ShakeOff -= FlyOff;
+            _currentDragonPart = null;
+        }
+
         _isGrounded = false;
     }
 
@@ -167,6 +182,44 @@ public class Move : MonoBehaviour
         _rb.gravityScale = 1f;
         _timeSinceGrounded = 0f;
         _verticalVelocity = 0f;
+
+        if (_groundHit.collider.TryGetComponent(out DragonPart newDragonPart))
+        {
+            if (_currentDragonPart == null && newDragonPart != _currentDragonPart)
+            {
+                _currentDragonPart = newDragonPart;
+                _currentDragonPart.ShakeOff += FlyOff;
+            }
+        }
+        else
+        {
+            if (_currentDragonPart != null)
+            {
+                _currentDragonPart.ShakeOff -= FlyOff;
+                _currentDragonPart = null;
+            }
+        }
+    }
+
+    private void FlyOff()
+    {
+        _isFlyingOff = true;
+        _isGrounded = false;
+        
+        _verticalVelocity = initialJumpForce * 3f;
+        _horizontalVelocity = Random.Range(-20f, 20f);
+        _rb.velocity = new Vector2(_horizontalVelocity, _verticalVelocity);
+        
+        _currentDragonPart.ShakeOff -= FlyOff;
+        _currentDragonPart = null;
+
+        StartCoroutine(EndFlyOff());
+    }
+
+    private IEnumerator EndFlyOff()
+    {
+        yield return new WaitForSeconds(2f);
+        _isFlyingOff = false;
     }
 
     public void InterruptJump()
@@ -238,6 +291,8 @@ public class Move : MonoBehaviour
 
     private bool ForwardCheck(float input)
     {
+        if (_isFlyingOff) return true;
+        
         Vector2 position2D = transform.position;
         
         // Low sweep
