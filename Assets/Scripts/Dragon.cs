@@ -10,8 +10,9 @@ public class Dragon : MonoBehaviour
     private Coroutine tickleSpotDisplayRoutine;
     private int _tickleSpotToActivate;
     
-    private enum Mood
+    public enum Mood
     {
+        SpittingFire = -1,
         Grumpy = 0,
         Resting = 3,
         Happy = 4,
@@ -19,13 +20,9 @@ public class Dragon : MonoBehaviour
     }
     private Mood _moodLevel;
 
-    void Awake()
-    {
-        _moodLevel = Mood.Grumpy;
-    }
-
     private void Start()
     {
+        _moodLevel = Mood.Grumpy;
         _tickleSpots = FindObjectsOfType<Tickle>();
         foreach (Tickle t in _tickleSpots)
         {
@@ -52,12 +49,19 @@ public class Dragon : MonoBehaviour
         ChangeMood(success ? +1 : -1);
     }
 
-    private void ChangeMood(int influence)
+    private void ChangeMood(int influenceChange)
     {
-        _moodLevel += influence;
+        _moodLevel += influenceChange;
         
-        if (_moodLevel < Mood.Grumpy) _moodLevel = Mood.Grumpy;
-        else if (_moodLevel > Mood.Cute) _moodLevel = Mood.Cute;
+        switch (_moodLevel)
+        {
+            case < Mood.Grumpy:
+                _moodLevel = Mood.Grumpy;
+                break;
+            case > Mood.Cute:
+                _moodLevel = Mood.Cute;
+                break;
+        }
     }
 
     public void EndGame()

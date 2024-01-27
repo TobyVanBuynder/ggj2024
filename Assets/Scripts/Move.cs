@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Move : MonoBehaviour
@@ -48,6 +47,7 @@ public class Move : MonoBehaviour
     private int _current2DLayer;
     public DragonPart _currentDragonPart;
     private bool _isFlyingOff;
+    private Animator _animator;
     
     [Header("Debug (should be private)")]
     [SerializeField] private bool _isGrounded;
@@ -58,6 +58,7 @@ public class Move : MonoBehaviour
 
     private void Awake()
     {
+        _animator = GetComponentInChildren<Animator>();
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -100,6 +101,8 @@ public class Move : MonoBehaviour
         
         // Apply both components to find final velocity
         _rb.velocity = new Vector2(_horizontalVelocity, _verticalVelocity);
+        
+        _animator.SetBool("IsWalking", Mathf.Abs(_horizontalVelocity) > .1f && _isGrounded);
     }
 
     private void GroundCheck()
@@ -170,6 +173,7 @@ public class Move : MonoBehaviour
         }
 
         _isGrounded = false;
+        _animator.SetBool("IsGrounded", false);
     }
 
     private void Fall()
@@ -199,6 +203,8 @@ public class Move : MonoBehaviour
                 _currentDragonPart = null;
             }
         }
+        
+        _animator.SetBool("IsGrounded", true);
     }
 
     private void FlyOff()
@@ -214,6 +220,7 @@ public class Move : MonoBehaviour
         _currentDragonPart = null;
 
         StartCoroutine(EndFlyOff());
+        _animator.SetBool("IsGrounded", false);
     }
 
     private IEnumerator EndFlyOff()

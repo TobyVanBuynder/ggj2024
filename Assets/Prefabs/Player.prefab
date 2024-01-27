@@ -87,12 +87,6 @@ MonoBehaviour:
   jumpAction: {fileID: 1120369429361536294, guid: bf6d43a64fb8647a0bbaa13593360e61, type: 3}
   sprintAction: {fileID: 2816253857141451733, guid: bf6d43a64fb8647a0bbaa13593360e61, type: 3}
   tickleEngageAction: {fileID: 8687365793856343141, guid: bf6d43a64fb8647a0bbaa13593360e61, type: 3}
-  _platformingActionMap:
-    m_Name: Platforming
-    m_Id: bf813031-6f6e-499b-897d-d30e6c9f10d1
-    m_Asset: {fileID: 0}
-    m_Actions: []
-    m_Bindings: []
 --- !u!114 &2776846783687210867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,10 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8ee43eb32f642dd937a6ae862ef595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 8
+  movementSpeed: 6
   airMovementSpeed: 7
-  acceleration: 3
-  deceleration: 5
+  acceleration: 4
+  deceleration: 8
   airAcceleration: 4
   airDeceleration: 0.1
   jumpInputDuration: 0.4
@@ -125,6 +119,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   body: {fileID: 8562443993169622121}
+  _currentDragonPart: {fileID: 0}
   _isGrounded: 0
   _jumpTimer: 0
   _isFalling: 0

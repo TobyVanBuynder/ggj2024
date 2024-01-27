@@ -20,7 +20,7 @@ public class TicklingInput : MonoBehaviour
 
     private void OnEnable()
     {
-        _ticklingActionMap.Enable();
+        //_ticklingActionMap.Enable();
     }
 
     private void OnDisable()
