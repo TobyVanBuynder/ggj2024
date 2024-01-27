@@ -10,10 +10,12 @@ public class PlayerInput : MonoBehaviour
     public InputActionReference tickleEngageAction;
 
     private Move _characterController;
+    private TickleDetector _tickleDetector;
     
     private void Awake()
     {
         _characterController = GetComponent<Move>();
+        _tickleDetector = GetComponentInChildren<TickleDetector>();
     }
     
     private void OnEnable()
@@ -60,6 +62,9 @@ public class PlayerInput : MonoBehaviour
     
     private void EngageTickling(InputAction.CallbackContext _)
     {
-        
+        if(_tickleDetector.CanTickle())
+        {
+            _tickleDetector.EngageTickle();
+        }
     }
 }  
