@@ -1,20 +1,32 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Tickle : MonoBehaviour
 {
-    private Dragon _dragon;
     private TickleUI _tickleUI;
     public int Difficulty{get; private set; }
     [SerializeField] private float _cooldownTime;
     [SerializeField] private float _currentCooldown;
     [SerializeField] private float _tickInterval = 5.0f;
 
+    private float _lifetime;
+
+    public Action<bool> TicklingMinigameEnded;
+    public Action Disappeared;
+
     void Awake()
     {
-        _dragon = FindObjectOfType<Dragon>();
         _tickleUI = FindObjectOfType<TickleUI>();
+    }
+
+    // Invoked by the Dragon
+    public void Appear()
+    {
+        _lifetime = 20f;
         _cooldownTime = Random.Range(30, 60);
         Difficulty = 1;
+        gameObject.SetActive(true);
     }
 
     public void Engage()
@@ -24,14 +36,22 @@ public class Tickle : MonoBehaviour
 
     public void End(bool isSuccess)
     {
-        if (isSuccess) _dragon.MakeHappy();
-        else _dragon.MakeSad();
+        TicklingMinigameEnded?.Invoke(isSuccess); // Notifies the TickleDetector, and Dragon
         Destroy(gameObject);
     }
 
     void Update()
     {
-        if (!_tickleUI.IsOpen) {
+        _lifetime -= Time.deltaTime;
+        if (_lifetime <= 0f)
+        {
+            // Close the spot
+            Disappeared?.Invoke();
+            gameObject.SetActive(false);
+        }
+        
+        if (!_tickleUI.IsOpen)
+        {
             _cooldownTime -= Time.deltaTime;
             if ((_currentCooldown -= Time.deltaTime) < 0)
             {

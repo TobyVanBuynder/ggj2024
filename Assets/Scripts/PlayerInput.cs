@@ -9,6 +9,7 @@ public class PlayerInput : MonoBehaviour
     public InputActionReference sprintAction;
     public InputActionReference tickleEngageAction;
 
+    private bool _canMove = true;
     private Move _characterController;
     private TickleDetector _tickleDetector;
     
@@ -29,6 +30,13 @@ public class PlayerInput : MonoBehaviour
         jumpAction.action.performed += JumpInputPerformed;
         jumpAction.action.canceled += JumpInputCanceled;
         tickleEngageAction.action.performed += EngageTickling;
+        
+        _tickleDetector.TicklingMinigameEnded += OnTicklingMinigameEnded;
+    }
+
+    private void OnTicklingMinigameEnded()
+    {
+        _canMove = true;
     }
 
     private void OnDisable()
@@ -65,6 +73,7 @@ public class PlayerInput : MonoBehaviour
         if(_tickleDetector.CanTickle())
         {
             _tickleDetector.EngageTickle();
+            _canMove = false;
         }
     }
 }  
