@@ -113,10 +113,10 @@ TextureImporter:
       name: DragonPatches_1
       rect:
         serializedVersion: 2
-        x: 571
-        y: 1737
-        width: 401
-        height: 292
+        x: 620
+        y: 1689
+        width: 336
+        height: 370
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -920,10 +920,10 @@ TextureImporter:
       name: DragonPatches_10
       rect:
         serializedVersion: 2
-        x: 589
-        y: 115
-        width: 664
-        height: 207
+        x: 258
+        y: 60
+        width: 359
+        height: 287
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1000,12 +1000,12 @@ TextureImporter:
       name: DragonPatches_11
       rect:
         serializedVersion: 2
-        x: 1332
-        y: 120
-        width: 104
-        height: 191
+        x: 778
+        y: 66
+        width: 321
+        height: 232
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: 42.683613, y: -0.69135576}
@@ -1038,48 +1038,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DragonPatches_12
-      rect:
-        serializedVersion: 2
-        x: 1607
-        y: 123
-        width: 98
-        height: 178
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 49, y: -19.518524}
-        - {x: 43.51115, y: 2.3086367}
-        - {x: 22.964275, y: 51.098763}
-        - {x: 6.2699385, y: 80.62962}
-        - {x: -1.4351398, y: 89}
-        - {x: -29.687094, y: 89}
-        - {x: -38.676353, y: 84.481476}
-        - {x: -47.66561, y: 69.074066}
-        - {x: -48.94979, y: 54.95061}
-        - {x: -48.94979, y: -73.44445}
-        - {x: -29.687094, y: -88.85186}
-        - {x: 7.554118, y: -88.85186}
-        - {x: 29.385174, y: -83.71606}
-        - {x: 49, y: -59.320995}
-      physicsShape: []
-      tessellationDetail: 0.2
-      bones: []
-      spriteID: 6c675b1ec2fca453080d523dc13cf50d
-      internalID: 616716526
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: DragonPatches_13
       rect:
         serializedVersion: 2
         x: 1754
-        y: 183
+        y: 220
         width: 829
-        height: 678
+        height: 641
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
