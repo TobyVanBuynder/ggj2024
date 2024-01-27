@@ -76,7 +76,10 @@ public class TickleUI : MonoBehaviour
         for (int b = 0; b < sequenceSize; b++)
         {
             int nextButtonToPress = Random.Range(0, /*(int)TickleButtonType.MAX*/2);
-            _sequence.Add(Instantiate(_buttonPrefabs[nextButtonToPress], transform));
+            GameObject newButtonPrompt = Instantiate(_buttonPrefabs[nextButtonToPress], transform);
+            newButtonPrompt.transform.Translate(b * 50f, 200, 0);
+            _sequence.Add(newButtonPrompt);
+            
         }
     }
 
