@@ -71,24 +71,21 @@ public class Move : MonoBehaviour
         
         if(ForwardCheck(MoveInput.x) && !_isAnticipatingJump)
         {
-            if (_isGrounded)
-            {
-                float inputMagnitude = Mathf.Abs(MoveInput.x);
-                float inputAcceleration = inputMagnitude > _previousInputMagnitude
-                    ?
-                    _isGrounded ? acceleration : airAcceleration
-                    :
-                    _isGrounded ? deceleration : airDeceleration;
-                
-                float lerpedInputVector = Mathf.Lerp(_previousInputVector, MoveInput.x,
-                                                        Time.deltaTime * inputAcceleration);
-                float lerpedMagnitude = Mathf.Abs(lerpedInputVector);
-                _horizontalVelocity = lerpedInputVector * (_isGrounded ? movementSpeed : airMovementSpeed);
-                
-                // Caching for next frame
-                _previousInputMagnitude = lerpedMagnitude;
-                _previousInputVector = lerpedInputVector;
-            }
+            float inputMagnitude = Mathf.Abs(MoveInput.x);
+            float inputAcceleration = inputMagnitude > _previousInputMagnitude
+                ?
+                _isGrounded ? acceleration : airAcceleration
+                :
+                _isGrounded ? deceleration : airDeceleration;
+            
+            float lerpedInputVector = Mathf.Lerp(_previousInputVector, MoveInput.x,
+                                                    Time.deltaTime * inputAcceleration);
+            float lerpedMagnitude = Mathf.Abs(lerpedInputVector);
+            _horizontalVelocity = lerpedInputVector * (_isGrounded ? movementSpeed : airMovementSpeed);
+            
+            // Caching for next frame
+            _previousInputMagnitude = lerpedMagnitude;
+            _previousInputVector = lerpedInputVector;
         }
         else
         {
@@ -154,12 +151,11 @@ public class Move : MonoBehaviour
     {
         _jumpTimer = jumpInputDuration;
         
-        // Change it immediately
-        _rb.velocity = MoveInput * initialJumpForce;
-
         // Will be also applied in FixedUpdate
-        _verticalVelocity = _rb.velocity.y;
-        _horizontalVelocity = _rb.velocity.x;
+        _verticalVelocity = initialJumpForce;
+        
+        // Change it immediately
+        _rb.velocity = new Vector2(MoveInput.x, _verticalVelocity);
 
         _isGrounded = false;
     }
