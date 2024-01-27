@@ -3,29 +3,29 @@ using UnityEngine;
 
 public class TickleSpotDetector : MonoBehaviour
 {
-    private Tickle _currentTickle;
+    private TickleSpot _currentTickleSpot;
     public Action TicklingMinigameEnded;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        _currentTickle = other.GetComponent<Tickle>();
+        _currentTickleSpot = other.GetComponent<TickleSpot>();
     }
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        _currentTickle = null;
+        _currentTickleSpot = null;
     }
 
-    public bool CanTickle() => _currentTickle != null;
+    public bool CanTickle() => _currentTickleSpot != null;
     public void EngageTickle()
     {
-        _currentTickle.TicklingMinigameEnded += OnTicklingMinigameEnded;
-        _currentTickle.Engage();
+        _currentTickleSpot.TicklingMinigameEnded += OnTicklingMinigameEnded;
+        _currentTickleSpot.Engage();
     }
 
     private void OnTicklingMinigameEnded(bool success)
     {
         TicklingMinigameEnded?.Invoke(); // PlayerInput listens to this
-        _currentTickle.TicklingMinigameEnded -= OnTicklingMinigameEnded;
+        _currentTickleSpot.TicklingMinigameEnded -= OnTicklingMinigameEnded;
     }
 }

@@ -21,12 +21,11 @@ public class PlayerInput : MonoBehaviour
     
     private void OnEnable()
     {
+        Debug.Log("OnEnable");
         _platformingActionMap = moveAction.action.actionMap;
         _platformingActionMap.Enable();
         
-        jumpAction.action.started += JumpInputStarted;
         jumpAction.action.performed += JumpInputPerformed;
-        jumpAction.action.canceled += JumpInputCanceled;
         tickleEngageAction.action.performed += EngageTickling;
         
         _tickleSpotSpotDetector.TicklingMinigameEnded += OnTicklingMinigameEnded;
@@ -36,15 +35,8 @@ public class PlayerInput : MonoBehaviour
     {
         _platformingActionMap.Disable();
         
-        jumpAction.action.started -= JumpInputStarted;
         jumpAction.action.performed -= JumpInputPerformed;
-        jumpAction.action.canceled -= JumpInputCanceled;
-        tickleEngageAction.action.canceled -= EngageTickling;
-    }
-
-    private void OnTicklingMinigameEnded()
-    {
-        moveAction.action.actionMap.Enable();
+        tickleEngageAction.action.performed -= EngageTickling;
     }
 
     private void Update()
@@ -53,27 +45,22 @@ public class PlayerInput : MonoBehaviour
         _characterController.IsSprinting = sprintAction.action.IsPressed();
     }
 
-    private void JumpInputStarted(InputAction.CallbackContext _)
-    {
-        _characterController.AnticipateJump();
-    }
-
     private void JumpInputPerformed(InputAction.CallbackContext _)
     {
-        _characterController.ReadyToJump();
-    }
-
-    private void JumpInputCanceled(InputAction.CallbackContext _)
-    {
-        _characterController.InterruptJump();
+        _characterController.PrepareJump();
     }
     
     private void EngageTickling(InputAction.CallbackContext _)
     {
         if(_tickleSpotSpotDetector.CanTickle())
         {
-            _tickleSpotSpotDetector.EngageTickle();
             _platformingActionMap.Disable();
+            _tickleSpotSpotDetector.EngageTickle();
         }
+    }
+
+    private void OnTicklingMinigameEnded()
+    {
+        _platformingActionMap.Enable();
     }
 }  

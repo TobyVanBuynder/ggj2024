@@ -106,12 +106,12 @@ MonoBehaviour:
   airAcceleration: 4
   airDeceleration: 0.1
   jumpInputDuration: 0.4
-  initialJumpForce: 12
+  initialJumpForce: 10
   coyoteTime: 0.125
   maxFallSpeed: 20
   cruiseHeight: 0.5
-  springStrength: 20
-  dampenFactor: 0.5
+  springStrength: 80
+  dampenFactor: 0.12
   _groundCollisionMask:
     serializedVersion: 2
     m_Bits: 72
@@ -123,8 +123,7 @@ MonoBehaviour:
   _isGrounded: 0
   _jumpTimer: 0
   _isFalling: 0
-  _isAnticipatingJump: 0
-  _isReadyToJump: 0
+  _preparingJump: 0
 --- !u!50 &3579947774625146841
 Rigidbody2D:
   serializedVersion: 4
@@ -400,7 +399,7 @@ Transform:
   m_GameObject: {fileID: 6063752297202692456}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.13, y: 1.07, z: -0.0215578}
+  m_LocalPosition: {x: 0.077, y: 0.777, z: -0.0215578}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -561,11 +560,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8734830317311928990, guid: 9899828da7de7a246bf76edd2d580a62, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.3639984
+      value: 0.484
       objectReference: {fileID: 0}
     - target: {fileID: 8734830317311928990, guid: 9899828da7de7a246bf76edd2d580a62, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.13399994
+      value: -0.147
       objectReference: {fileID: 0}
     - target: {fileID: 8734830317311928990, guid: 9899828da7de7a246bf76edd2d580a62, type: 3}
       propertyPath: m_LocalPosition.z

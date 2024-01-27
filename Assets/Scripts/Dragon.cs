@@ -6,7 +6,7 @@ public class Dragon : MonoBehaviour
     public float spotLifetime = 20f;
     public float intervalBetweenTickleSpots = 10f;
     
-    private Tickle[] _tickleSpots;
+    private TickleSpot[] _tickleSpots;
     private Coroutine tickleSpotDisplayRoutine;
     private int _tickleSpotToActivate;
     
@@ -23,8 +23,8 @@ public class Dragon : MonoBehaviour
     private void Start()
     {
         _moodLevel = Mood.Grumpy;
-        _tickleSpots = FindObjectsOfType<Tickle>();
-        foreach (Tickle t in _tickleSpots)
+        _tickleSpots = FindObjectsOfType<TickleSpot>();
+        foreach (TickleSpot t in _tickleSpots)
         {
             t.gameObject.SetActive(false);
             t.TicklingMinigameEnded += OnMinigameEnded;
@@ -52,16 +52,9 @@ public class Dragon : MonoBehaviour
     private void ChangeMood(int influenceChange)
     {
         _moodLevel += influenceChange;
-        
-        switch (_moodLevel)
-        {
-            case < Mood.Grumpy:
-                _moodLevel = Mood.Grumpy;
-                break;
-            case > Mood.Cute:
-                _moodLevel = Mood.Cute;
-                break;
-        }
+
+        if (_moodLevel < Mood.Grumpy) _moodLevel = Mood.Grumpy;
+        if (_moodLevel > Mood.Cute) _moodLevel = Mood.Cute;
     }
 
     public void EndGame()
@@ -71,7 +64,7 @@ public class Dragon : MonoBehaviour
 
     private void OnDestroy()
     {
-        foreach (Tickle t in _tickleSpots)
+        foreach (TickleSpot t in _tickleSpots)
         {
             t.TicklingMinigameEnded -= OnMinigameEnded;
         }
