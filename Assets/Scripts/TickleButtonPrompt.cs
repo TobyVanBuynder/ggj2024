@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public enum TickleButtonType {
     A,
@@ -19,11 +20,11 @@ public class TickleButtonPrompt : MonoBehaviour
     public Sprite keyboardSprite;
     public Sprite gamepadSprite;
 
-    private SpriteRenderer _spriteRenderer;
+    private Image _sprite;
 
     void Awake()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _sprite = GetComponent<Image>();
     }
 
     void Start()
@@ -34,17 +35,18 @@ public class TickleButtonPrompt : MonoBehaviour
             // is joystick question Mark?
         }
 
-        _spriteRenderer.sprite = keyboardSprite;
+        _sprite.sprite = keyboardSprite;
     }
 
     public void Show()
     {
+        _sprite.color = Color.white;
         transform.localScale = new Vector3(1.5f, 1.5f, 1);
     }
 
     public void Complete()
     {
-        _spriteRenderer.material.color = new Color(1,1,1, 0.5f);
+        _sprite.color = new Color(1,1,1, 0.5f);
         transform.localScale = Vector3.one;
     }
 }

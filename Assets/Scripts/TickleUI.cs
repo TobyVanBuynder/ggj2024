@@ -5,10 +5,12 @@ public class TickleUI : MonoBehaviour
 {
     private Tickle _currentTickle;
     private const float _baseTimeToComplete = 10.0f;
+    private const float _buttonWidthSpacing = 80f;
+    [SerializeField] private Canvas _canvas;
     [SerializeField] private List<GameObject> _sequence;
     [SerializeField] private float _timeToComplete = -1f;
     [SerializeField] private bool _isTickling = false;
-    [SerializeField] private int _numButtonsModifier = 6;
+    [SerializeField] private int _numButtonsModifier = 3;
     [SerializeField] private GameObject[] _buttonPrefabs;
 
     private int _currentSequenceIndex = 0;
@@ -73,11 +75,12 @@ public class TickleUI : MonoBehaviour
 
         int sequenceSize = difficulty * _numButtonsModifier;
         _sequence.Capacity = sequenceSize;
+        float halfWidth = (sequenceSize - 1) * _buttonWidthSpacing * 0.5f;
         for (int b = 0; b < sequenceSize; b++)
         {
             int nextButtonToPress = Random.Range(0, /*(int)TickleButtonType.MAX*/2);
-            GameObject newButtonPrompt = Instantiate(_buttonPrefabs[nextButtonToPress], transform);
-            newButtonPrompt.transform.Translate(b * 50f, 200, 0);
+            GameObject newButtonPrompt = Instantiate(_buttonPrefabs[nextButtonToPress], _canvas.transform);
+            newButtonPrompt.transform.Translate(-halfWidth + b * _buttonWidthSpacing, 50f, 0);
             _sequence.Add(newButtonPrompt);
             
         }
