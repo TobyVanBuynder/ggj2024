@@ -17,9 +17,10 @@ public class TickleUI : MonoBehaviour
         MAX
     }
     private Tickle _currentTickle;
+    private const float _baseTimeToComplete = 10.0f;
     [SerializeField] private List<TickleButton> _sequence;
     [SerializeField] private float _timeToComplete;
-    private const float _baseTimeToComplete = 10.0f;
+    [SerializeField] private bool _isTickling = false;
     [SerializeField] private int _numButtonsModifier = 6;
 
     public bool IsOpen{get; private set;}
@@ -36,12 +37,13 @@ public class TickleUI : MonoBehaviour
         _currentTickle = tickle;
         _timeToComplete = _baseTimeToComplete - _currentTickle.Difficulty * 0.5f;
         SetupSequence(_currentTickle.Difficulty);
+        _isTickling = true;
     }
 
-    public void Close()
+    public void Close(bool isSuccess)
     {
         IsOpen = false;
-        _currentTickle.End(true); // TODO: change this latah
+        _currentTickle.End(isSuccess); // TODO: change this latah
     }
 
     private void SetupSequence(int difficulty)
@@ -53,6 +55,18 @@ public class TickleUI : MonoBehaviour
         for (int b = 0; b < sequenceSize; b++)
         {
             _sequence.Add((TickleButton)Random.Range(0, (int)TickleButton.MAX));
+        }
+    }
+
+    void Update()
+    {
+        if (_isTickling)
+        {
+            _timeToComplete -= Time.deltaTime;
+            if (_timeToComplete <= 0) {
+                _isTickling = false;
+                Close(false);
+            }
         }
     }
 }
