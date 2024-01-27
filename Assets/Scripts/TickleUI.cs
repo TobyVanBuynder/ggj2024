@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class TickleUI : MonoBehaviour
 {
@@ -15,8 +17,8 @@ public class TickleUI : MonoBehaviour
         MAX
     }
     private Tickle _currentTickle;
-    private List<TickleButton> _sequence;
-    private float _timeToComplete;
+    [SerializeField] private List<TickleButton> _sequence;
+    [SerializeField] private float _timeToComplete;
     private const float _baseTimeToComplete = 10.0f;
     [SerializeField] private int _numButtonsModifier = 6;
 
@@ -30,14 +32,16 @@ public class TickleUI : MonoBehaviour
 
     public void Open(Tickle tickle)
     {
-        _currentTickle = tickle;
-        SetupSequence(_currentTickle.Difficulty);
         IsOpen = true;
+        _currentTickle = tickle;
+        _timeToComplete = _baseTimeToComplete - _currentTickle.Difficulty * 0.5f;
+        SetupSequence(_currentTickle.Difficulty);
     }
 
     public void Close()
     {
         IsOpen = false;
+        _currentTickle.End(true); // TODO: change this latah
     }
 
     private void SetupSequence(int difficulty)

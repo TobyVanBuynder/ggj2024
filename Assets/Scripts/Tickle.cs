@@ -14,6 +14,7 @@ public class Tickle : MonoBehaviour
         _dragon = FindObjectOfType<Dragon>();
         _tickleUI = FindObjectOfType<TickleUI>();
         _cooldownTime = Random.Range(30, 60);
+        Difficulty = 1;
     }
 
     public void Engage()
