@@ -4,7 +4,7 @@ public class Tickle : MonoBehaviour
 {
     private Dragon _dragon;
     private TickleUI _tickleUI;
-    private int _sequenceDifficulty = 0;
+    public int Difficulty{get; private set; }
     [SerializeField] private float _cooldownTime;
     [SerializeField] private float _currentCooldown;
     [SerializeField] private float _tickInterval = 5.0f;
@@ -18,7 +18,7 @@ public class Tickle : MonoBehaviour
 
     public void Engage()
     {
-        _tickleUI.Open(_sequenceDifficulty);
+        _tickleUI.Open(this);
     }
 
     public void End(bool isSuccess)
@@ -35,7 +35,7 @@ public class Tickle : MonoBehaviour
             if ((_currentCooldown -= Time.deltaTime) < 0)
             {
                 _currentCooldown += _tickInterval;
-                _sequenceDifficulty++;
+                Difficulty++;
             }
             if (_cooldownTime <= 0) End(false);
         }
