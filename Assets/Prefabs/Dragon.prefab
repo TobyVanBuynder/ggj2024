@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1234609178475425423}
   - component: {fileID: 8151902540871455372}
   - component: {fileID: 1741179140506353192}
+  - component: {fileID: 8786826125520348362}
   m_Layer: 6
   m_Name: DragonPatches_4
   m_TagString: Untagged
@@ -129,6 +130,18 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &8786826125520348362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7831102012885832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5022d32c2bbeb41da95fb31a03344ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &234767913745869307
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +237,7 @@ GameObject:
   - component: {fileID: 6925291072640187374}
   - component: {fileID: 6474760390696575787}
   - component: {fileID: 8756818323526044299}
+  - component: {fileID: 643697339384843329}
   m_Layer: 6
   m_Name: DragonPatches_7
   m_TagString: Untagged
@@ -342,6 +356,18 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &643697339384843329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415403389048642430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5022d32c2bbeb41da95fb31a03344ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1587174300543393544
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,6 +379,7 @@ GameObject:
   - component: {fileID: 7683441439393042072}
   - component: {fileID: 8006216902827271662}
   - component: {fileID: 6158234299948238927}
+  - component: {fileID: 943079109240758194}
   m_Layer: 6
   m_Name: DragonPatches_1
   m_TagString: Untagged
@@ -473,6 +500,18 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &943079109240758194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587174300543393544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5022d32c2bbeb41da95fb31a03344ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1853657498564583246
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +523,7 @@ GameObject:
   - component: {fileID: 5044922967255287033}
   - component: {fileID: 8288689814256001657}
   - component: {fileID: 6893153173921263754}
+  - component: {fileID: 6449064494713583599}
   m_Layer: 6
   m_Name: DragonPatches_3
   m_TagString: Untagged
@@ -604,6 +644,18 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &6449064494713583599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853657498564583246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5022d32c2bbeb41da95fb31a03344ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2853029854148447706
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +751,7 @@ GameObject:
   - component: {fileID: 6882391212556117643}
   - component: {fileID: 1316115215820461046}
   - component: {fileID: 1468255381845700420}
+  - component: {fileID: 7444165451962838063}
   m_Layer: 6
   m_Name: DragonPatches_0
   m_TagString: Untagged
@@ -820,6 +873,18 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &7444165451962838063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2935208184901943884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5022d32c2bbeb41da95fb31a03344ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3140805963669679647
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,6 +939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c80dc8ae5b4247439fdbcb13f72398c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spotLifetime: 20
   intervalBetweenTickleSpots: 10
 --- !u!1 &3382227588909386908
 GameObject:
@@ -886,6 +952,7 @@ GameObject:
   - component: {fileID: 5191211703931394706}
   - component: {fileID: 8088631866205944299}
   - component: {fileID: 3428799321628426107}
+  - component: {fileID: 678700990906969079}
   m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
@@ -1010,6 +1077,18 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &678700990906969079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3382227588909386908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5022d32c2bbeb41da95fb31a03344ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5615407543379604059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,6 +1221,7 @@ GameObject:
   - component: {fileID: 5708722445007050121}
   - component: {fileID: 6700501705543383045}
   - component: {fileID: 7157495040100031407}
+  - component: {fileID: 1573177536500498851}
   m_Layer: 6
   m_Name: DragonPatches_2
   m_TagString: Untagged
@@ -1265,6 +1345,18 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &1573177536500498851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7349536007401915723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5022d32c2bbeb41da95fb31a03344ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7916719793282076912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,6 +1368,7 @@ GameObject:
   - component: {fileID: 8903928022130274536}
   - component: {fileID: 8310170682564772094}
   - component: {fileID: 1592916358940717350}
+  - component: {fileID: 8204847167239365817}
   m_Layer: 6
   m_Name: Jaw
   m_TagString: Untagged
@@ -1403,6 +1496,18 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &8204847167239365817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7916719793282076912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5022d32c2bbeb41da95fb31a03344ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8384126431340329800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,6 +1519,7 @@ GameObject:
   - component: {fileID: 1764605675975539932}
   - component: {fileID: 8278027360528239017}
   - component: {fileID: 8705530894066950115}
+  - component: {fileID: 1048189291564202740}
   m_Layer: 6
   m_Name: DragonPatches_6
   m_TagString: Untagged
@@ -1534,6 +1640,18 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &1048189291564202740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8384126431340329800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5022d32c2bbeb41da95fb31a03344ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8631657620795253420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,6 +1747,7 @@ GameObject:
   - component: {fileID: 5735293064844291907}
   - component: {fileID: 7325073363257153939}
   - component: {fileID: 805553370197419156}
+  - component: {fileID: 6807048082788051396}
   m_Layer: 6
   m_Name: DragonPatches_5
   m_TagString: Untagged
@@ -1757,6 +1876,18 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &6807048082788051396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8820693757774065870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5022d32c2bbeb41da95fb31a03344ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &792333719910352878
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -45,10 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a661271bbe64249acc4f070e1066d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sequence: 
+  _sequence: []
   _timeToComplete: 0
   _isTickling: 0
   _numButtonsModifier: 6
+  _buttonPrefabs:
+  - {fileID: 1828012908686380301, guid: 6e0d0bcd8803ad94898f54c4805023b4, type: 3}
+  - {fileID: 4952124535519685826, guid: 9b644637259d04d4c8f511afd0c7f1ea, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &6080710345971888998
 MonoBehaviour:
   m_ObjectHideFlags: 0
