@@ -4,8 +4,14 @@ using UnityEngine.InputSystem;
 public class TicklingInput : MonoBehaviour
 {
     [Header("Inputs")]
-    public InputActionReference key1Action;
-    public InputActionReference key2Action;
+    public InputActionReference keyActionA;
+    public InputActionReference keyActionB;
+    public InputActionReference keyActionX;
+    public InputActionReference keyActionY;
+    public InputActionReference keyActionLeft;
+    public InputActionReference keyActionRight;
+    public InputActionReference keyActionUp;
+    public InputActionReference keyActionDown;
     
     private InputActionMap _ticklingActionMap;
     private TickleUI _tickleUI;
@@ -13,13 +19,19 @@ public class TicklingInput : MonoBehaviour
     void Awake()
     {
         _tickleUI = FindObjectOfType<TickleUI>();
-        _ticklingActionMap = key1Action.action.actionMap;
+        _ticklingActionMap = keyActionA.action.actionMap;
     }
 
     private void OnEnable()
     {
-        key1Action.action.started += OnKey1;
-        key2Action.action.started += OnKey2;
+        keyActionA.action.started += OnKeyA;
+        keyActionB.action.started += OnKeyB;
+        keyActionX.action.started += OnKeyX;
+        keyActionY.action.started += OnKeyY;
+        keyActionLeft.action.started += OnKeyArrowLeft;
+        keyActionRight.action.started += OnKeyArrowRight;
+        keyActionUp.action.started += OnKeyArrowUp;
+        keyActionDown.action.started += OnKeyArrowDown;
         _tickleUI.UIOpened += OnUIOpened;
         _tickleUI.UIClosed += OnUIClosed;
     }
@@ -28,8 +40,14 @@ public class TicklingInput : MonoBehaviour
     {
         _ticklingActionMap.Disable();
         
-        key1Action.action.started -= OnKey1;
-        key2Action.action.started -= OnKey2;
+        keyActionA.action.started -= OnKeyA;
+        keyActionB.action.started -= OnKeyB;
+        keyActionX.action.started -= OnKeyX;
+        keyActionY.action.started -= OnKeyY;
+        keyActionLeft.action.started -= OnKeyArrowLeft;
+        keyActionRight.action.started -= OnKeyArrowRight;
+        keyActionUp.action.started -= OnKeyArrowUp;
+        keyActionDown.action.started -= OnKeyArrowDown;
         _tickleUI.UIOpened -= OnUIOpened;
         _tickleUI.UIClosed -= OnUIClosed;
     }
@@ -44,15 +62,43 @@ public class TicklingInput : MonoBehaviour
         _ticklingActionMap.Disable();
     }
 
-    private void OnKey1(InputAction.CallbackContext _)
+    private void OnKeyA(InputAction.CallbackContext _)
     {
-        //Debug.Log("Key 1 pressed (A)");
         _tickleUI.OnKeyPressed(TickleButtonType.A);
     }
 
-    private void OnKey2(InputAction.CallbackContext _)
+    private void OnKeyB(InputAction.CallbackContext _)
     {
-        //Debug.Log("Key 2 pressed (B)");
         _tickleUI.OnKeyPressed(TickleButtonType.B);
+    }
+
+    private void OnKeyX(InputAction.CallbackContext _)
+    {
+        _tickleUI.OnKeyPressed(TickleButtonType.X);
+    }
+
+    private void OnKeyY(InputAction.CallbackContext _)
+    {
+        _tickleUI.OnKeyPressed(TickleButtonType.Y);
+    }
+
+    private void OnKeyArrowLeft(InputAction.CallbackContext _)
+    {
+        _tickleUI.OnKeyPressed(TickleButtonType.LEFT);
+    }
+
+    private void OnKeyArrowRight(InputAction.CallbackContext _)
+    {
+        _tickleUI.OnKeyPressed(TickleButtonType.RIGHT);
+    }
+
+    private void OnKeyArrowUp(InputAction.CallbackContext _)
+    {
+        _tickleUI.OnKeyPressed(TickleButtonType.UP);
+    }
+
+    private void OnKeyArrowDown(InputAction.CallbackContext _)
+    {
+        _tickleUI.OnKeyPressed(TickleButtonType.DOWN);
     }
 }

@@ -97,7 +97,7 @@ public class TickleUI : MonoBehaviour
         float halfWidth = (sequenceSize - 1) * _buttonWidthSpacing * 0.5f;
         for (int b = 0; b < sequenceSize; b++)
         {
-            int nextButtonToPress = Random.Range(0, /*(int)TickleButtonType.MAX*/2);
+            int nextButtonToPress = Random.Range(0, (int)TickleButtonType.MAX);
             GameObject newButtonPrompt = Instantiate(_buttonPrefabs[nextButtonToPress], _panel);
             newButtonPrompt.transform.Translate(-halfWidth + b * _buttonWidthSpacing, 50f, 0);
             _sequence.Add(newButtonPrompt);
