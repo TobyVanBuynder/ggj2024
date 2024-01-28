@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dragon : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Dragon : MonoBehaviour
     private DragonExpressions dragonExpressions;
 
     public Action OnEndGame;
+    
+    public Slider moodBarSlider;
     
     public enum Mood
     {
