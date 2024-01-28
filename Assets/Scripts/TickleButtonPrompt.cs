@@ -30,12 +30,8 @@ public class TickleButtonPrompt : MonoBehaviour
     void Start()
     {
         // if is kb then take the right spriterino
-        if (InputSystem.devices.Count > 1)
-        {
-            // is joystick question Mark?
-        }
-
-        _sprite.sprite = keyboardSprite;
+        // is joystick question Mark?
+        _sprite.sprite = Input.GetJoystickNames().Length > 0 ? gamepadSprite : keyboardSprite;
     }
 
     public void Show()
