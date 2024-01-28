@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,6 +10,9 @@ public class Dragon : MonoBehaviour
     private TickleSpot[] _tickleSpots;
     private Coroutine tickleSpotDisplayRoutine;
     private int _tickleSpotToActivate;
+    private GameObject _treasureObject;
+
+    public Action OnEndGame;
     
     public enum Mood
     {
@@ -47,6 +51,7 @@ public class Dragon : MonoBehaviour
     private void OnMinigameEnded(bool success)
     {
         ChangeMood(success ? +1 : -1);
+        if (_moodLevel == Mood.Cute) EndGame();
     }
 
     private void ChangeMood(int influenceChange)
@@ -60,6 +65,14 @@ public class Dragon : MonoBehaviour
     public void EndGame()
     {
         StopCoroutine(tickleSpotDisplayRoutine);
+        OnEndGame?.Invoke();
+        ShowTreasure();
+    }
+
+    private void ShowTreasure()
+    {
+        // TODO: Open Dragon's mouth
+        _treasureObject.SetActive(true);
     }
 
     private void OnDestroy()

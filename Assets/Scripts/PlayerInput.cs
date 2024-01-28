@@ -12,11 +12,13 @@ public class PlayerInput : MonoBehaviour
     private Move _characterController;
     private TickleSpotDetector _tickleSpotSpotDetector;
     private InputActionMap _platformingActionMap;
+    private Dragon _dragon;
     
     private void Awake()
     {
         _characterController = GetComponent<Move>();
         _tickleSpotSpotDetector = GetComponentInChildren<TickleSpotDetector>();
+        _dragon = FindObjectOfType<Dragon>();
     }
     
     private void OnEnable()
@@ -28,6 +30,7 @@ public class PlayerInput : MonoBehaviour
         tickleEngageAction.action.performed += EngageTickling;
         
         _tickleSpotSpotDetector.TicklingMinigameEnded += OnTicklingMinigameEnded;
+        _dragon.OnEndGame += OnEndGame;
     }
 
     private void OnDisable()
@@ -63,5 +66,10 @@ public class PlayerInput : MonoBehaviour
     private void OnTicklingMinigameEnded()
     {
         _platformingActionMap.Enable();
+    }
+
+    private void OnEndGame()
+    {
+        _platformingActionMap.Disable();
     }
 }  
