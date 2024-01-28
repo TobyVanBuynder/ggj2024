@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: 1
-  keyboardSprite: {fileID: 21300000, guid: 17ab93444d56c48438ec334a56357e82, type: 3}
+  keyboardSprite: {fileID: 21300000, guid: 6586f99ea89e31b40a2e0304397c2f8c, type: 3}
   gamepadSprite: {fileID: 21300000, guid: 17ab93444d56c48438ec334a56357e82, type: 3}
 --- !u!222 &7310999332080820222
 CanvasRenderer:
