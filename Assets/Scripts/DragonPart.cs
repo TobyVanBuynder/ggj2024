@@ -14,6 +14,9 @@ public class DragonPart : MonoBehaviour
     private bool _isShaking;
     private bool _canShake = true; // Linked to whether the minigame is on or off
     private bool _isCountingDown;
+    private DragonShakeSounds _shakeSounds;
+    private AudioSource _shakeSource;
+    
 
     private TickleUI _tickleUI;
     private Coroutine _shakeCoroutine;
@@ -34,6 +37,8 @@ public class DragonPart : MonoBehaviour
         _cooldown = Random.Range(_minWait, _maxWait);
         _isShaking = false;
         _isCountingDown = true;
+        _shakeSource = GetComponent<AudioSource>();
+        _shakeSounds = FindObjectOfType<DragonShakeSounds>();
     }
 
     private void Update()
@@ -52,6 +57,9 @@ public class DragonPart : MonoBehaviour
     {
         _isCountingDown = false;
         _isShaking = true;
+        _shakeSource.clip = _shakeSounds.GetRandomShakeSound();
+        _shakeSource.pitch = Random.Range(95, 105) / 100f;
+        _shakeSource.Play();
         _shakeCoroutine = StartCoroutine(StopShaking());
     }
 
