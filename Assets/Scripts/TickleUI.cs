@@ -20,7 +20,7 @@ public class TickleUI : MonoBehaviour {
 	public Action UIOpened;
 	public Action UIClosed;
 
-	private int _numButtonsModifier = 3;
+	private int _numButtonsModifier = 2;
 	private int _currentSequenceIndex = 0;
 
 	public bool IsOpen { get; private set; }

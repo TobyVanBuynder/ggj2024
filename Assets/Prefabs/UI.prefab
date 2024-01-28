@@ -1431,7 +1431,7 @@ MonoBehaviour:
   - {fileID: 4952124535519685826, guid: 78abe06746278a74e96e610189518d25, type: 3}
   - {fileID: 4952124535519685826, guid: a5e7199eb7004a243808190309e289b4, type: 3}
   - {fileID: 4952124535519685826, guid: ec3a8640d4491014b847a5d50046bf6b, type: 3}
-  _minigameTimeBar: {fileID: 1821986523441045103}
+  _minigameTimeBar: {fileID: 7025716343808067800}
   _minigameTimeSlider: {fileID: 491860336408150830}
 --- !u!114 &6080710345971888998
 MonoBehaviour:
