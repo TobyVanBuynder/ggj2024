@@ -21,7 +21,6 @@ public class PlayerInput : MonoBehaviour
     
     private void OnEnable()
     {
-        Debug.Log("OnEnable");
         _platformingActionMap = moveAction.action.actionMap;
         _platformingActionMap.Enable();
         
@@ -41,6 +40,8 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
+        if (!_platformingActionMap.enabled) return;
+        
         _characterController.MoveInput = moveAction.action.ReadValue<Vector2>();
         _characterController.IsSprinting = sprintAction.action.IsPressed();
     }
@@ -54,8 +55,8 @@ public class PlayerInput : MonoBehaviour
     {
         if(_tickleSpotSpotDetector.CanTickle())
         {
-            _platformingActionMap.Disable();
             _tickleSpotSpotDetector.EngageTickle();
+            _platformingActionMap.Disable();
         }
     }
 

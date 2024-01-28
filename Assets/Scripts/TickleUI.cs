@@ -26,11 +26,13 @@ public class TickleUI : MonoBehaviour
     {
         _sequence = new List<GameObject>();
         IsOpen = false;
+        _panel.gameObject.SetActive(false);
     }
 
     public void Open(TickleSpot tickleSpot)
     {
         IsOpen = true;
+        _panel.gameObject.SetActive(true);
         _currentTickleSpot = tickleSpot;
         _timeToComplete = _baseTimeToComplete - _currentTickleSpot.Difficulty * 0.5f;
         SetupSequence(_currentTickleSpot.Difficulty);
@@ -44,7 +46,12 @@ public class TickleUI : MonoBehaviour
     public void Close(bool isSuccess)
     {
         IsOpen = false;
-        _currentTickleSpot.End(isSuccess); // TODO: change this latah
+        for (int i = 0; i < _sequence.Count; i++)
+        {
+            Destroy(_sequence[i]);
+        }
+        _panel.gameObject.SetActive(false);
+        _currentTickleSpot.End(isSuccess);
         UIClosed?.Invoke();
     }
 
