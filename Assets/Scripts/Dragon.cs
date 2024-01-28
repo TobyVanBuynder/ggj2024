@@ -17,6 +17,7 @@ public class Dragon : MonoBehaviour
     public Action OnEndGame;
     
     public Slider moodBarSlider;
+    public Color[] moodBarColours;
     
     public enum Mood
     {
@@ -29,16 +30,22 @@ public class Dragon : MonoBehaviour
     }
     private Mood _moodLevel;
 
+    private void Awake()
+    {
+        dragonExpressions = GetComponent<DragonExpressions>();
+    }
+
     private void Start()
     {
         _moodLevel = Mood.Grumpy;
+        VisualiseMood();
+        
         _tickleSpots = FindObjectsOfType<TickleSpot>();
         foreach (TickleSpot t in _tickleSpots)
         {
             t.gameObject.SetActive(false);
             t.TicklingMinigameEnded += OnMinigameEnded;
         }
-        dragonExpressions = GetComponent<DragonExpressions>();
 
         tickleSpotDisplayRoutine = StartCoroutine(DisplayNewTickleSpot());
     }
@@ -67,7 +74,15 @@ public class Dragon : MonoBehaviour
         if (_moodLevel < Mood.Grumpy) _moodLevel = Mood.Grumpy;
         if (_moodLevel > Mood.Treasure) _moodLevel = Mood.Treasure;
         
+        VisualiseMood();
+    }
+
+    private void VisualiseMood()
+    {
         dragonExpressions.SwitchFaceTo(_moodLevel);
+        int intMood = (int)_moodLevel;
+        moodBarSlider.value = intMood;
+        moodBarSlider.fillRect.GetComponent<Image>().color = moodBarColours[intMood];
     }
 
     public void EndGame()
