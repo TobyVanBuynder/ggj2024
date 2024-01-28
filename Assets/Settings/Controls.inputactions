@@ -179,7 +179,7 @@
                     "name": "",
                     "id": "9c5ba387-c7c3-404d-9f2c-97e715a7c447",
                     "path": "<Gamepad>/buttonWest",
-                    "interactions": "Hold(duration=1)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "EngageTickle",
