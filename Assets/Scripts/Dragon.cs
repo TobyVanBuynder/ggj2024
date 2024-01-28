@@ -6,12 +6,12 @@ public class Dragon : MonoBehaviour
 {
     public float spotLifetime = 20f;
     public float intervalBetweenTickleSpots = 10f;
-    public DragonExpressions dragonExpressions;
     
     private TickleSpot[] _tickleSpots;
     private Coroutine tickleSpotDisplayRoutine;
     private int _tickleSpotToActivate;
     private GameObject _treasureObject;
+    private DragonExpressions dragonExpressions;
 
     public Action OnEndGame;
     
@@ -35,6 +35,7 @@ public class Dragon : MonoBehaviour
             t.gameObject.SetActive(false);
             t.TicklingMinigameEnded += OnMinigameEnded;
         }
+        dragonExpressions = GetComponent<DragonExpressions>();
 
         tickleSpotDisplayRoutine = StartCoroutine(DisplayNewTickleSpot());
     }
