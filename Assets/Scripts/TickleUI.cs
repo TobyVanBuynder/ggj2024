@@ -14,6 +14,7 @@ public class TickleUI : MonoBehaviour
     [SerializeField] private bool _isTickling = false;
     [SerializeField] private int _numButtonsModifier = 3;
     [SerializeField] private GameObject[] _buttonPrefabs;
+    [SerializeField] private GameObject _minigameTimeBar;
 
     public Action UIOpened;
     public Action UIClosed;
@@ -27,6 +28,7 @@ public class TickleUI : MonoBehaviour
         _sequence = new List<GameObject>();
         IsOpen = false;
         _panel.gameObject.SetActive(false);
+        _minigameTimeBar.SetActive(false);
     }
 
     public void Open(TickleSpot tickleSpot)
@@ -39,6 +41,7 @@ public class TickleUI : MonoBehaviour
         _currentSequenceIndex = 0;
         _sequence[0].GetComponent<TickleButtonPrompt>().Show();
         _isTickling = true;
+        _minigameTimeBar.SetActive(true);
         
         UIOpened?.Invoke();
     }
@@ -51,6 +54,7 @@ public class TickleUI : MonoBehaviour
             Destroy(_sequence[i]);
         }
         _panel.gameObject.SetActive(false);
+        _minigameTimeBar.SetActive(false);
         _currentTickleSpot.End(isSuccess);
         UIClosed?.Invoke();
     }
