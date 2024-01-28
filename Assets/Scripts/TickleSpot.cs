@@ -8,7 +8,7 @@ public class TickleSpot : MonoBehaviour
     public int Difficulty{get; private set; }
     [SerializeField] private float _cooldownTime;
     [SerializeField] private float _currentCooldown;
-    [SerializeField] private float _tickInterval = 5.0f;
+    [SerializeField] private float _tickInterval = 10.0f;
 
     private float _lifetime;
 
@@ -21,10 +21,10 @@ public class TickleSpot : MonoBehaviour
     }
 
     // Invoked by the Dragon
-    public void Appear(float lifetime)
+    public void Appear()
     {
-        _lifetime = lifetime;
         _cooldownTime = Random.Range(30, 60);
+        _currentCooldown = _tickInterval;
         Difficulty = 1;
         gameObject.SetActive(true);
     }
@@ -42,23 +42,20 @@ public class TickleSpot : MonoBehaviour
 
     void Update()
     {
-        _lifetime -= Time.deltaTime;
-        if (_lifetime <= 0f)
-        {
-            // Close the spot
-            Disappeared?.Invoke();
-            gameObject.SetActive(false);
-        }
-        
         if (!_tickleUI.IsOpen)
         {
             _cooldownTime -= Time.deltaTime;
-            if ((_currentCooldown -= Time.deltaTime) < 0)
+            _currentCooldown -= Time.deltaTime;
+            if (_cooldownTime <= 0)
+            {
+                Disappeared?.Invoke();
+                gameObject.SetActive(false);
+            }
+            else if (_currentCooldown <= 0)
             {
                 _currentCooldown += _tickInterval;
                 Difficulty++;
             }
-            if (_cooldownTime <= 0) End(false);
         }
     }
 }

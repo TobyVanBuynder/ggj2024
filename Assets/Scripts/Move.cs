@@ -169,7 +169,6 @@ public class Move : MonoBehaviour
 
     private void Jump()
     {
-        Debug.Log("Jump");
         _jumpTimer = jumpInputDuration;
         
         // Will be also applied in FixedUpdate

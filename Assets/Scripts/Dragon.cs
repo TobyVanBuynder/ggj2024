@@ -6,7 +6,6 @@ using Random = UnityEngine.Random;
 
 public class Dragon : MonoBehaviour
 {
-    public float spotLifetime = 20f;
     public float intervalBetweenTickleSpots = 10f;
     
     private TickleSpot[] _tickleSpots;
@@ -19,7 +18,7 @@ public class Dragon : MonoBehaviour
     public Action OnEndGame;
     
     public Slider moodBarSlider;
-    public Color[] moodBarColours;
+    //public Color[] moodBarColours;
     public AudioClip[] moodSounds;
     
     public enum Mood
@@ -42,7 +41,7 @@ public class Dragon : MonoBehaviour
     private void Start()
     {
         _moodLevel = Mood.Grumpy;
-        VisualiseMood();
+        VisualiseMood();    
         
         _tickleSpots = FindObjectsOfType<TickleSpot>();
         foreach (TickleSpot t in _tickleSpots)
@@ -58,7 +57,7 @@ public class Dragon : MonoBehaviour
     {
         while (true)
         {
-            _tickleSpots[_tickleSpotToActivate].Appear(spotLifetime);
+            _tickleSpots[_tickleSpotToActivate].Appear();
             _tickleSpotToActivate = (_tickleSpotToActivate + 1) % _tickleSpots.Length;
         
             yield return new WaitForSeconds(intervalBetweenTickleSpots);
@@ -90,7 +89,9 @@ public class Dragon : MonoBehaviour
         dragonExpressions.SwitchFaceTo(_moodLevel);
         int intMood = (int)_moodLevel;
         moodBarSlider.value = intMood;
-        moodBarSlider.fillRect.GetComponent<Image>().color = moodBarColours[intMood];
+        //moodBarSlider.fillRect.GetComponent<Image>().color = moodBarColours[intMood];
+
+        // set the fill amount of bar
     }
 
     public void EndGame()

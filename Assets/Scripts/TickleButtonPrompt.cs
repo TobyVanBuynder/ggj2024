@@ -37,7 +37,7 @@ public class TickleButtonPrompt : MonoBehaviour
     public void Show()
     {
         _sprite.color = Color.white;
-        transform.localScale = new Vector3(1.5f, 1.5f, 1);
+        transform.localScale = new Vector3(2f, 2f, 1);
     }
 
     public void Complete()
