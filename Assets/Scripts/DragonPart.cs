@@ -5,21 +5,27 @@ using UnityEngine.Events;
 public class DragonPart : MonoBehaviour
 {
     private float _timeToShake;
-    private float _minWait = 6f;
-    private float _maxWait = 20f;
+    private float _minWait = 1f;
+    private float _maxWait = 3f;
     
     private float _cooldown;
     private Vector3 _originalPosition;
     private float _displace = .1f;
     private bool _isShaking;
+    private bool _canShake = true; // Linked to whether the minigame is on or off
     private bool _isCountingDown;
+
+    private TickleUI _tickleUI;
+    private Coroutine _shakeCoroutine;
 
     public UnityAction ShakeOff;
 
-    private void Start()
+    private void Awake()
     {
         _originalPosition = transform.position;
-        Initialise();
+        _tickleUI = FindObjectOfType<TickleUI>();
+        _tickleUI.UIOpened += MinigameStarted;
+        _tickleUI.UIClosed += MinigameStopped;
     }
 
     private void Initialise()
@@ -32,7 +38,7 @@ public class DragonPart : MonoBehaviour
 
     private void Update()
     {
-        if (_isCountingDown)
+        if (_canShake && _isCountingDown)
         {
             _cooldown -= Time.deltaTime;
 
@@ -46,7 +52,7 @@ public class DragonPart : MonoBehaviour
     {
         _isCountingDown = false;
         _isShaking = true;
-        StartCoroutine(StopShaking());
+        _shakeCoroutine = StartCoroutine(StopShaking());
     }
 
     private IEnumerator StopShaking()
@@ -66,5 +72,29 @@ public class DragonPart : MonoBehaviour
     {
         Vector2 displace = Random.insideUnitCircle * _displace;
         transform.position = _originalPosition + new Vector3(displace.x, displace.y, 0f);
+    }
+
+    public void Tickle()
+    {
+        //Debug.Log($"Engaged {gameObject.name}");
+        Initialise();
+    }
+
+    public void Release()
+    {
+        //Debug.Log($"Released {gameObject.name}");
+        _isCountingDown = false;
+        if(_shakeCoroutine != null) StopCoroutine(_shakeCoroutine);
+    }
+
+    private void MinigameStarted()
+    {
+        _canShake = false;
+        if(_shakeCoroutine != null) StopCoroutine(_shakeCoroutine);
+    }
+
+    private void MinigameStopped()
+    {
+        _canShake = true;
     }
 }

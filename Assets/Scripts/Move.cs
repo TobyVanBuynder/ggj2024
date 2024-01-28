@@ -44,7 +44,6 @@ public class Move : MonoBehaviour
     private RaycastHit2D _groundHit;
     private RaycastHit2D _headHit;
     private RaycastHit2D _forwardHit;
-    private float _timeSinceGrounded;
     private int _current2DLayer;
     public DragonPart _currentDragonPart;
     private bool _isFlyingOff;
@@ -56,6 +55,7 @@ public class Move : MonoBehaviour
     [SerializeField] private float _jumpTimer;
     [SerializeField] private bool _isFalling;
     [SerializeField] private bool _preparingJump = false;
+    [SerializeField] private float _timeSinceGrounded;
 
     private void Awake()
     {
@@ -150,7 +150,7 @@ public class Move : MonoBehaviour
 
     public void PrepareJump()
     {
-        bool canJump = _isGrounded || _timeSinceGrounded < coyoteTime;
+        bool canJump = (_isGrounded || _timeSinceGrounded < coyoteTime) && !_preparingJump;
         if (canJump)
         {
             _preparingJump = true;
@@ -161,6 +161,7 @@ public class Move : MonoBehaviour
 
     private IEnumerator ActuallyJump()
     {
+        Debug.Log("Actuallty");
         yield return new WaitForSeconds(.55f);
         
         Jump();
@@ -168,6 +169,7 @@ public class Move : MonoBehaviour
 
     private void Jump()
     {
+        Debug.Log("Jump");
         _jumpTimer = jumpInputDuration;
         
         // Will be also applied in FixedUpdate
@@ -180,6 +182,7 @@ public class Move : MonoBehaviour
         if (_currentDragonPart != null)
         {
             _currentDragonPart.ShakeOff -= FlyOff;
+            _currentDragonPart.Release();
             _currentDragonPart = null;
         }
 
@@ -205,6 +208,7 @@ public class Move : MonoBehaviour
             {
                 _currentDragonPart = newDragonPart;
                 _currentDragonPart.ShakeOff += FlyOff;
+                _currentDragonPart.Tickle();
             }
         }
         else
@@ -212,6 +216,7 @@ public class Move : MonoBehaviour
             if (_currentDragonPart != null)
             {
                 _currentDragonPart.ShakeOff -= FlyOff;
+                _currentDragonPart.Release();
                 _currentDragonPart = null;
             }
         }
@@ -223,12 +228,14 @@ public class Move : MonoBehaviour
     {
         _isFlyingOff = true;
         _isGrounded = false;
+        _preparingJump = false;
         
         _verticalVelocity = initialJumpForce * 3f;
         _horizontalVelocity = Random.Range(-20f, 20f);
         _rb.velocity = new Vector2(_horizontalVelocity, _verticalVelocity);
         
         _currentDragonPart.ShakeOff -= FlyOff;
+        _currentDragonPart.Release();
         _currentDragonPart = null;
 
         if(_jumpCoroutine != null) StopCoroutine(_jumpCoroutine);
@@ -266,7 +273,7 @@ public class Move : MonoBehaviour
             _rb.gravityScale = 0f;
             
             _jumpTimer -= Time.deltaTime;
-            if (_jumpTimer < 0f) InterruptJump();
+            //if (_jumpTimer < 0f) InterruptJump();
         }
         else
         {
