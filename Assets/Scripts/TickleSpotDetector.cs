@@ -11,7 +11,7 @@ public class TickleSpotDetector : MonoBehaviour
         _currentTickleSpot = other.GetComponent<TickleSpot>();
     }
 
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         _currentTickleSpot = null;
     }

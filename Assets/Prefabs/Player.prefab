@@ -124,6 +124,7 @@ MonoBehaviour:
   _jumpTimer: 0
   _isFalling: 0
   _preparingJump: 0
+  _timeSinceGrounded: 0
 --- !u!50 &3579947774625146841
 Rigidbody2D:
   serializedVersion: 4
@@ -434,7 +435,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
