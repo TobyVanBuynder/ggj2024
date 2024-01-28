@@ -1471,6 +1471,12 @@ MonoBehaviour:
   - {r: 0.29479095, g: 0.025631888, b: 0.6037736, a: 1}
   - {r: 0.19744569, g: 0.24307784, b: 0.8207547, a: 1}
   - {r: 0.121840514, g: 0.4861935, b: 0.6981132, a: 1}
+  moodSounds:
+  - {fileID: 8300000, guid: 1bbca7cf14bb0fc4ea00cafd5bb7c6f5, type: 3}
+  - {fileID: 8300000, guid: 9695c87bff3ea4c4d94e87b93b46c715, type: 3}
+  - {fileID: 8300000, guid: d5c1acd37e10eb8438fd2bf406e4b89e, type: 3}
+  - {fileID: 8300000, guid: 59bbfa4ad2b302741915f9210b1eda9d, type: 3}
+  - {fileID: 8300000, guid: 2d841b2e16cdc9146a99247f56e61601, type: 3}
 --- !u!114 &4455292924593583719
 MonoBehaviour:
   m_ObjectHideFlags: 0

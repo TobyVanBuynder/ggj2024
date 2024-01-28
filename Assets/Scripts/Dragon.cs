@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Dragon : MonoBehaviour
 {
@@ -13,11 +14,13 @@ public class Dragon : MonoBehaviour
     private int _tickleSpotToActivate;
     private GameObject _treasureObject;
     private DragonExpressions dragonExpressions;
+    private AudioSource _sfxSource;
 
     public Action OnEndGame;
     
     public Slider moodBarSlider;
     public Color[] moodBarColours;
+    public AudioClip[] moodSounds;
     
     public enum Mood
     {
@@ -33,6 +36,7 @@ public class Dragon : MonoBehaviour
     private void Awake()
     {
         dragonExpressions = GetComponent<DragonExpressions>();
+        _sfxSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -75,6 +79,10 @@ public class Dragon : MonoBehaviour
         if (_moodLevel > Mood.Treasure) _moodLevel = Mood.Treasure;
         
         VisualiseMood();
+
+        _sfxSource.clip = moodSounds[(int)_moodLevel];
+        _sfxSource.pitch = Random.Range(85, 115) / 100f;
+        _sfxSource.Play();
     }
 
     private void VisualiseMood()
