@@ -6,6 +6,7 @@ public class Dragon : MonoBehaviour
 {
     public float spotLifetime = 20f;
     public float intervalBetweenTickleSpots = 10f;
+    public DragonExpressions dragonExpressions;
     
     private TickleSpot[] _tickleSpots;
     private Coroutine tickleSpotDisplayRoutine;
@@ -18,9 +19,10 @@ public class Dragon : MonoBehaviour
     {
         SpittingFire = -1,
         Grumpy = 0,
-        Resting = 3,
-        Happy = 4,
-        Cute = 5
+        Resting = 1,
+        Happy = 2,
+        Cute = 3,
+        Treasure = 4
     }
     private Mood _moodLevel;
 
@@ -51,7 +53,7 @@ public class Dragon : MonoBehaviour
     private void OnMinigameEnded(bool success)
     {
         ChangeMood(success ? +1 : -1);
-        if (_moodLevel == Mood.Cute) EndGame();
+        if (_moodLevel == Mood.Treasure) EndGame();
     }
 
     private void ChangeMood(int influenceChange)
@@ -59,7 +61,9 @@ public class Dragon : MonoBehaviour
         _moodLevel += influenceChange;
 
         if (_moodLevel < Mood.Grumpy) _moodLevel = Mood.Grumpy;
-        if (_moodLevel > Mood.Cute) _moodLevel = Mood.Cute;
+        if (_moodLevel > Mood.Treasure) _moodLevel = Mood.Treasure;
+        
+        dragonExpressions.SwitchFaceTo(_moodLevel);
     }
 
     public void EndGame()
