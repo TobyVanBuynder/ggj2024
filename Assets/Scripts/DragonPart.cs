@@ -29,6 +29,9 @@ public class DragonPart : MonoBehaviour
         _tickleUI = FindObjectOfType<TickleUI>();
         _tickleUI.UIOpened += MinigameStarted;
         _tickleUI.UIClosed += MinigameStopped;
+        _shakeSounds = FindObjectOfType<DragonShakeSounds>();
+        _shakeSource = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
+        _shakeSource.playOnAwake = false;
     }
 
     private void Initialise()
@@ -37,8 +40,6 @@ public class DragonPart : MonoBehaviour
         _cooldown = Random.Range(_minWait, _maxWait);
         _isShaking = false;
         _isCountingDown = true;
-        _shakeSource = GetComponent<AudioSource>();
-        _shakeSounds = FindObjectOfType<DragonShakeSounds>();
     }
 
     private void Update()
